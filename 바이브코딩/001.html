@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이브 코딩 - 창의적인 코딩의 시작</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark: #1e1b4b;
+            --light: #f8f7ff;
+            --gray: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: backwards;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .about-text.animated {
+            opacity: 1;
+            transform: translateX(0);
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        .about-image {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .about-image.animated {
+            opacity: 1;
+            transform: translateX(0);
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .code-preview {
+            background: #1e1b4b;
+            border-radius: 15px;
+            padding: 2rem;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: #2d2a5e;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .code-line {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pricing-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">바이브 코딩</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#features">특징</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#pricing">가격</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>창의적인 코딩의 새로운 시작</h1>
+            <p>바이브 코딩과 함께 당신의 아이디어를 현실로 만들어보세요</p>
+            <div class="cta-buttons">
+                <a href="#features" class="btn btn-primary">시작하기</a>
+                <a href="#about" class="btn btn-secondary">더 알아보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">주요 특징</h2>
+            <p class="section-subtitle">바이브 코딩이 제공하는 특별한 기능들</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>직관적인 인터페이스</h3>
+                    <p>복잡한 설정 없이 바로 시작할 수 있는 깔끔하고 직관적인 인터페이스를 제공합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>실시간 미리보기</h3>
+                    <p>코드를 작성하는 동시에 결과를 실시간으로 확인하며 빠른 개발이 가능합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>다양한 템플릿</h3>
+                    <p>전문적으로 디자인된 템플릿으로 프로젝트를 빠르게 시작할 수 있습니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>강력한 도구</h3>
+                    <p>개발에 필요한 모든 도구와 확장 기능을 한 곳에서 사용할 수 있습니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>실시간 협업</h3>
+                    <p>팀원들과 실시간으로 코드를 공유하고 함께 작업할 수 있습니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>모바일 지원</h3>
+                    <p>언제 어디서나 모바일 기기로도 코딩이 가능합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">바이브 코딩 소개</h2>
+            <p class="section-subtitle">코딩을 더 쉽고 재미있게</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>모든 개발자를 위한 플랫폼</h3>
+                    <p>바이브 코딩은 초보자부터 전문가까지 모든 개발자가 쉽게 사용할 수 있는 통합 개발 환경입니다. 직관적인 인터페이스와 강력한 기능으로 개발 생산성을 극대화할 수 있습니다.</p>
+                    <br>
+                    <p>실시간 협업, 버전 관리, 자동 배포 등 현대적인 개발에 필요한 모든 기능을 제공하며, 지속적인 업데이트를 통해 최신 기술 트렌드를 반영합니다.</p>
+                    <br>
+                    <a href="#contact" class="btn btn-primary">지금 시작하기</a>
+                </div>
+                <div class="about-image">
+                    <div class="code-preview">
+                        <div class="code-line">const vibe = require('vibe-coding');</div>
+                        <div class="code-line"></div>
+                        <div class="code-line">// 프로젝트 생성</div>
+                        <div class="code-line">const project = vibe.create({</div>
+                        <div class="code-line">  name: 'MyAwesomeApp',</div>
+                        <div class="code-line">  template: 'modern-web',</div>
+                        <div class="code-line">  features: ['realtime', 'responsive']</div>
+                        <div class="code-line">});</div>
+                        <div class="code-line"></div>
+                        <div class="code-line">// 개발 서버 시작</div>
+                        <div class="code-line">project.start();</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">가격 플랜</h2>
+            <p class="section-subtitle">당신에게 맞는 플랜을 선택하세요</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>무료</h3>
+                    <div class="price">₩0<span class="price-period">/월</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 기본 에디터</li>
+                        <li>✓ 5개 프로젝트</li>
+                        <li>✓ 커뮤니티 지원</li>
+                        <li>✓ 기본 템플릿</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">시작하기</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>프로</h3>
+                    <div class="price">₩29,000<span class="price-period">/월</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 모든 무료 기능</li>
+                        <li>✓ 무제한 프로젝트</li>
+                        <li>✓ 실시간 협업</li>
+                        <li>✓ 프리미엄 템플릿</li>
+                        <li>✓ 우선 지원</li>
+                        <li>✓ 자동 배포</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">시작하기</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>기업</h3>
+                    <div class="price">₩99,000<span class="price-period">/월</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 모든 프로 기능</li>
+                        <li>✓ 무제한 팀원</li>
+                        <li>✓ 전용 서버</li>
+                        <li>✓ SLA 보장</li>
+                        <li>✓ 맞춤 교육</li>
+                        <li>✓ API 접근</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">문의하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">문의하기</h2>
+            <p>궁금한 점이 있으신가요? 언제든 문의해주세요</p>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">메시지</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">보내기</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 바이브 코딩. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        const aboutText = document.querySelector('.about-text');
+        const aboutImage = document.querySelector('.about-image');
+        if (aboutText) observer.observe(aboutText);
+        if (aboutImage) observer.observe(aboutImage);
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would normally send the data to a server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('감사합니다! 메시지가 전송되었습니다.');
+            contactForm.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        const hero = document.querySelector('.hero');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const parallaxSpeed = 0.5;
+            hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        });
+
+        // Add typing animation to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < text.length) {
+                heroTitle.textContent += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 50);
+            }
+        }
+
+        // Start typing animation after loader disappears
+        setTimeout(typeText, 800);
+    </script>
+</body>
+</html>

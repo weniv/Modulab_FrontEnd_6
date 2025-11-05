@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이브 코딩 부트캠프 - 당신의 개발자 커리어를 시작하세요</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark: #1e1b4b;
+            --light: #f8f7ff;
+            --gray: #6b7280;
+            --success: #10b981;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            animation: wave 15s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text .highlight {
+            color: #fbbf24;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: backwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            animation: fadeInRight 1s ease 0.5s;
+            animation-fill-mode: backwards;
+        }
+
+        .bootcamp-preview {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .preview-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .preview-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .curriculum-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .timeline-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:first-child {
+            text-align: right;
+        }
+
+        .timeline-content {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-duration {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .phase-description {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .phase-topics {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .phase-topics li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .phase-topics li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Instructor Section */
+        .instructor {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .instructor-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .instructor-image {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .instructor-info h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .instructor-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .instructor-bio {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructor-credentials {
+            list-style: none;
+        }
+
+        .instructor-credentials li {
+            padding: 0.75rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .instructor-credentials li:before {
+            content: "🎓 ";
+            margin-right: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pricing-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.3);
+            border: 3px solid var(--primary-color);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 1rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .author-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .cta-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-form button {
+            padding: 1rem 3rem;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cta-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.5rem 0;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: auto 1fr;
+                gap: 1.5rem;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content:first-child {
+                text-align: left;
+            }
+
+            .instructor-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .instructor-image {
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: white;
+                flex-direction: column;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-form input {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">바이브 코딩 부트캠프</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#curriculum">커리큘럼</a></li>
+                <li><a href="#features">특징</a></li>
+                <li><a href="#pricing">가격</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>16주 만에 <span class="highlight">개발자</span>로 성장하세요</h1>
+                <p>실무 중심 프로젝트와 현직 개발자의 1:1 멘토링으로 당신의 커리어를 시작하세요. 제로부터 풀스택 개발자까지, 바이브 코딩이 함께합니다.</p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">취업률</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">수료생</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">만족도</span>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#pricing" class="btn btn-primary">수강 신청하기</a>
+                    <a href="#curriculum" class="btn btn-secondary">커리큘럼 보기</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="bootcamp-preview">
+                    <div class="preview-item">📚 16주 집중 과정</div>
+                    <div class="preview-item">👨‍💻 1:1 멘토링 제공</div>
+                    <div class="preview-item">🚀 실무 프로젝트 5개 이상</div>
+                    <div class="preview-item">💼 취업 지원 프로그램</div>
+                    <div class="preview-item">🎓 수료증 발급</div>
+                    <div class="preview-item">🔄 평생 무료 재수강</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <h2 class="section-title">커리큘럼</h2>
+            <p class="section-subtitle">체계적인 4단계 학습 과정으로 풀스택 개발자로 성장합니다</p>
+
+            <div class="curriculum-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Phase 1: 기초 다지기</h3>
+                        <p class="phase-duration">1-4주차</p>
+                        <p class="phase-description">프로그래밍의 기초부터 탄탄하게 시작합니다</p>
+                        <ul class="phase-topics">
+                            <li>HTML/CSS 마스터</li>
+                            <li>JavaScript 기본 문법</li>
+                            <li>Git & GitHub</li>
+                            <li>반응형 웹 디자인</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-marker">1</div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Phase 2: 프론트엔드 심화</h3>
+                        <p class="phase-duration">5-8주차</p>
+                        <p class="phase-description">현대적인 프론트엔드 기술을 학습합니다</p>
+                        <ul class="phase-topics">
+                            <li>React 핵심 개념</li>
+                            <li>State Management (Redux)</li>
+                            <li>API 통신 (REST, GraphQL)</li>
+                            <li>TypeScript 기초</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Phase 3: 백엔드 개발</h3>
+                        <p class="phase-duration">9-12주차</p>
+                        <p class="phase-description">서버와 데이터베이스를 다루는 방법을 배웁니다</p>
+                        <ul class="phase-topics">
+                            <li>Node.js & Express</li>
+                            <li>데이터베이스 (MongoDB, PostgreSQL)</li>
+                            <li>RESTful API 설계</li>
+                            <li>인증 & 보안</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-marker">3</div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Phase 4: 최종 프로젝트</h3>
+                        <p class="phase-duration">13-16주차</p>
+                        <p class="phase-description">실전 프로젝트로 포트폴리오를 완성합니다</p>
+                        <ul class="phase-topics">
+                            <li>팀 프로젝트 기획 & 설계</li>
+                            <li>풀스택 애플리케이션 개발</li>
+                            <li>배포 & 운영 (AWS, Docker)</li>
+                            <li>포트폴리오 완성 & 취업 준비</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">바이브 코딩만의 특별함</h2>
+            <p class="section-subtitle">성공적인 커리어 전환을 위한 완벽한 시스템</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>현직 개발자 멘토링</h3>
+                    <p>실리콘밸리 및 국내 유명 기업 출신 현직 개발자가 직접 멘토링하며, 실무 노하우를 전수합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>프로젝트 중심 학습</h3>
+                    <p>이론만이 아닌 실제 프로젝트를 통해 배우며, 포트폴리오로 활용 가능한 5개 이상의 프로젝트를 완성합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>취업 지원 프로그램</h3>
+                    <p>이력서 작성부터 모의 면접, 기업 매칭까지 취업 성공을 위한 전방위 지원을 제공합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>유연한 학습 일정</h3>
+                    <p>평일반, 주말반, 온라인반 등 다양한 수강 옵션으로 직장인도 부담 없이 학습할 수 있습니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>평생 재수강</h3>
+                    <p>한 번 등록으로 평생 무료 재수강이 가능하며, 업데이트된 최신 커리큘럼도 무료로 제공됩니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>수료 후 관리</h3>
+                    <p>수료 후에도 지속적인 네트워킹과 스터디 그룹 운영으로 커리어 성장을 계속 지원합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor" id="instructor">
+        <div class="container">
+            <h2 class="section-title">강사 소개</h2>
+            <p class="section-subtitle">경험 많은 현직 개발자가 직접 가르칩니다</p>
+
+            <div class="instructor-content">
+                <div class="instructor-image">👨‍💻</div>
+                <div class="instructor-info">
+                    <h3>김바이브</h3>
+                    <p class="instructor-title">수석 강사 / 풀스택 개발자</p>
+                    <p class="instructor-bio">
+                        10년 이상의 개발 경력과 5년의 강의 경험을 보유한 시니어 개발자입니다.
+                        실리콘밸리 스타트업에서 시니어 개발자로 근무하며 쌓은 실무 경험을
+                        여러분과 공유하고자 합니다.
+                    </p>
+                    <ul class="instructor-credentials">
+                        <li>전) 구글 코리아 시니어 개발자</li>
+                        <li>전) 카카오 테크 리드</li>
+                        <li>풀스택 개발 10년 경력</li>
+                        <li>강의 만족도 4.9/5.0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">수강료</h2>
+            <p class="section-subtitle">합리적인 가격으로 미래를 투자하세요</p>
+
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>온라인 과정</h3>
+                    <div class="price">₩2,400,000<span class="price-period"></span></div>
+                    <ul class="pricing-features">
+                        <li>16주 온라인 강의</li>
+                        <li>모든 강의 자료 제공</li>
+                        <li>주 1회 온라인 멘토링</li>
+                        <li>프로젝트 코드 리뷰</li>
+                        <li>수료증 발급</li>
+                        <li>평생 재수강 가능</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">신청하기</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="badge">추천</div>
+                    <h3>오프라인 과정</h3>
+                    <div class="price">₩4,800,000<span class="price-period"></span></div>
+                    <ul class="pricing-features">
+                        <li>16주 오프라인 강의</li>
+                        <li>모든 온라인 과정 포함</li>
+                        <li>주 2회 1:1 멘토링</li>
+                        <li>팀 프로젝트 협업</li>
+                        <li>취업 컨설팅 & 이력서 첨삭</li>
+                        <li>기업 추천 프로그램</li>
+                        <li>평생 커뮤니티 멤버십</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">신청하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">수강생 후기</h2>
+            <p class="section-subtitle">수료생들의 생생한 이야기를 들어보세요</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "비전공자였지만 16주 만에 프론트엔드 개발자로 취업했습니다.
+                        실무 중심의 커리큘럼과 멘토님의 세심한 지도 덕분에 가능했어요!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">김</div>
+                        <div class="author-info">
+                            <h4>김민수</h4>
+                            <p>네이버 프론트엔드 개발자</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "단순히 코딩만 배우는 게 아니라 개발자로서의 사고방식과
+                        문제 해결 능력을 기를 수 있었습니다. 정말 추천합니다!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">박</div>
+                        <div class="author-info">
+                            <h4>박지영</h4>
+                            <p>카카오 백엔드 개발자</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "다른 부트캠프도 알아봤지만 바이브 코딩의 취업 지원 프로그램이
+                        가장 체계적이었습니다. 덕분에 원하던 기업에 입사했어요!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">이</div>
+                        <div class="author-info">
+                            <h4>이준호</h4>
+                            <p>토스 풀스택 개발자</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <p class="section-subtitle">궁금한 점을 해결해드립니다</p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>비전공자도 수강 가능한가요?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            네, 물론입니다! 바이브 코딩 부트캠프는 비전공자를 위해 설계된 프로그램입니다.
+                            기초부터 차근차근 배울 수 있도록 커리큘럼이 구성되어 있으며,
+                            실제로 수강생의 70% 이상이 비전공자입니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>수업은 어떻게 진행되나요?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            주 5일(월-금) 오전 10시부터 오후 6시까지 진행됩니다.
+                            온라인반의 경우 녹화된 강의를 언제든 수강 가능하며,
+                            실시간 Q&A 세션이 주 2회 진행됩니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>취업률이 정말 98%인가요?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            네, 2024년 기준 수료 후 6개월 이내 취업률이 98%입니다.
+                            취업 지원 프로그램을 통해 이력서 작성부터 면접 준비,
+                            기업 매칭까지 체계적으로 지원하고 있습니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>수강료 할부가 가능한가요?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            네, 3개월/6개월/12개월 무이자 할부가 가능합니다.
+                            또한 국민내일배움카드 사용 시 최대 70% 할인 혜택을 받을 수 있으니
+                            상담 시 문의해주세요.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>수료 후에도 지원을 받을 수 있나요?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            물론입니다! 평생 재수강 권한과 함께 수료생 커뮤니티에서
+                            지속적으로 네트워킹하고 학습할 수 있습니다.
+                            정기적인 스터디 모임과 세미나도 운영됩니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>지금 바로 시작하세요</h2>
+            <p>무료 상담 신청하고 상세한 커리큘럼을 받아보세요</p>
+
+            <form class="cta-form" id="ctaForm">
+                <input type="text" placeholder="이름을 입력하세요" required>
+                <input type="email" placeholder="이메일을 입력하세요" required>
+                <button type="submit">무료 상담 신청</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>바이브 코딩</h3>
+                    <p>당신의 개발자 커리어를 응원합니다</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📷</a>
+                        <a href="#">🐦</a>
+                        <a href="#">💼</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>과정</h3>
+                    <ul>
+                        <li><a href="#curriculum">커리큘럼</a></li>
+                        <li><a href="#pricing">수강료</a></li>
+                        <li><a href="#instructor">강사진</a></li>
+                        <li><a href="#testimonials">수강생 후기</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>지원</h3>
+                    <ul>
+                        <li><a href="#faq">자주 묻는 질문</a></li>
+                        <li><a href="#">블로그</a></li>
+                        <li><a href="#">취업 가이드</a></li>
+                        <li><a href="#">문의하기</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>연락처</h3>
+                    <ul>
+                        <li>이메일: info@vibecoding.com</li>
+                        <li>전화: 02-1234-5678</li>
+                        <li>주소: 서울시 강남구 테헤란로</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 바이브 코딩 부트캠프. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
+        document.querySelectorAll('.pricing-card').forEach(card => observer.observe(card));
+        document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
+        document.querySelectorAll('.testimonial-card').forEach(card => observer.observe(card));
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all FAQ items
+                faqItems.forEach(faq => {
+                    faq.classList.remove('active');
+                    faq.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // CTA form submission
+        const ctaForm = document.getElementById('ctaForm');
+        ctaForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('상담 신청이 완료되었습니다! 곧 연락드리겠습니다.');
+            ctaForm.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
