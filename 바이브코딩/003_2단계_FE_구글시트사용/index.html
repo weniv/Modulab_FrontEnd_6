@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets TODO App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 TODO List</h1>
+            <p class="subtitle">Powered by Google Sheets</p>
+        </header>
+
+        <div class="config-section" id="configSection">
+            <h2>설정</h2>
+            <div class="form-group">
+                <label for="apiUrl">Google Apps Script Web App URL:</label>
+                <input type="text" id="apiUrl" placeholder="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
+                <button onclick="saveConfig()" class="btn btn-primary">저장</button>
+            </div>
+            <p class="help-text">Google Apps Script 배포 후 받은 URL을 입력하세요</p>
+        </div>
+
+        <div class="todo-section" id="todoSection" style="display: none;">
+            <div class="add-todo">
+                <input type="text" id="todoInput" placeholder="새로운 할 일을 입력하세요..." onkeypress="handleKeyPress(event)">
+                <button onclick="addTodo()" class="btn btn-add">추가</button>
+            </div>
+
+            <div class="filter-buttons">
+                <button onclick="filterTodos('all')" class="filter-btn active" data-filter="all">전체</button>
+                <button onclick="filterTodos('active')" class="filter-btn" data-filter="active">진행중</button>
+                <button onclick="filterTodos('completed')" class="filter-btn" data-filter="completed">완료</button>
+            </div>
+
+            <div class="loading" id="loading">로딩중...</div>
+            <div class="error" id="error"></div>
+
+            <ul class="todo-list" id="todoList"></ul>
+
+            <div class="stats">
+                <span id="stats">총 0개 | 진행중 0개 | 완료 0개</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

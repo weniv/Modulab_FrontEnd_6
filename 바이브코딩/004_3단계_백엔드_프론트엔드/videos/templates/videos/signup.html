@@ -1,0 +1,134 @@
+{% extends 'videos/base.html' %}
+
+{% block title %}회원가입 - 비디오 스트리밍{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-container {
+        max-width: 400px;
+        margin: 60px auto;
+        background-color: #181818;
+        padding: 40px;
+        border-radius: 8px;
+    }
+    
+    .auth-title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #fff;
+        font-size: 14px;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        background-color: #0f0f0f;
+        border: 1px solid #3a3a3a;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 14px;
+    }
+    
+    .form-group input:focus {
+        outline: none;
+        border-color: #3ea6ff;
+    }
+    
+    .btn-full {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .auth-links {
+        text-align: center;
+    }
+    
+    .auth-links a {
+        color: #3ea6ff;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .auth-links a:hover {
+        text-decoration: underline;
+    }
+    
+    .errorlist {
+        color: #ff0000;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .errorlist ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .help-text {
+        color: #aaa;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <h2 class="auth-title">회원가입</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="errorlist">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">사용자명</label>
+            {{ form.username }}
+            {% if form.username.help_text %}
+                <div class="help-text">{{ form.username.help_text }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">비밀번호</label>
+            {{ form.password1 }}
+            {% if form.password1.help_text %}
+                <div class="help-text">{{ form.password1.help_text }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">비밀번호 확인</label>
+            {{ form.password2 }}
+            {% if form.password2.help_text %}
+                <div class="help-text">{{ form.password2.help_text }}</div>
+            {% endif %}
+        </div>
+        
+        <button type="submit" class="btn btn-full">회원가입</button>
+    </form>
+    
+    <div class="auth-links">
+        <a href="{% url 'login' %}">이미 계정이 있으신가요? 로그인</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'videos/base.html' %}
+
+{% block title %}{{ video.title }} - 비디오 스트리밍{% endblock %}
+
+{% block extra_css %}
+<style>
+    .video-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    
+    .video-player {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background-color: #000;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    .video-player video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .video-details {
+        background-color: #181818;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .video-title-detail {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 12px;
+    }
+    
+    .video-stats {
+        color: #aaa;
+        font-size: 14px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #3a3a3a;
+        margin-bottom: 16px;
+    }
+    
+    .video-description {
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+    }
+    
+    .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #3ea6ff;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .back-link:hover {
+        text-decoration: underline;
+    }
+    
+    .private-notice {
+        background-color: #ff0000;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="video-container">
+    <a href="{% url 'home' %}" class="back-link">← 목록으로 돌아가기</a>
+    
+    {% if video.is_private %}
+        <div class="private-notice">비공개 동영상</div>
+    {% endif %}
+    
+    <div class="video-player">
+        <video controls autoplay>
+            <source src="{{ video.video_file.url }}" type="video/mp4">
+            <source src="{{ video.video_file.url }}" type="video/webm">
+            <source src="{{ video.video_file.url }}" type="video/ogg">
+            브라우저가 비디오 재생을 지원하지 않습니다.
+        </video>
+    </div>
+    
+    <div class="video-details">
+        <h1 class="video-title-detail">{{ video.title }}</h1>
+        <div class="video-stats">
+            조회수 {{ video.views }}회 · {{ video.created_at|date:"Y년 m월 d일" }}
+        </div>
+        {% if video.description %}
+            <div class="video-description">{{ video.description }}</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'videos/base.html' %}
+
+{% block title %}홈 - 비디오 스트리밍{% endblock %}
+
+{% block extra_css %}
+<style>
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+    }
+    
+    .video-card {
+        background-color: #181818;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+    }
+    
+    .video-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .video-thumbnail {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        background-color: #000;
+    }
+    
+    .video-info {
+        padding: 12px;
+    }
+    
+    .video-title {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .video-meta {
+        color: #aaa;
+        font-size: 14px;
+    }
+    
+    .private-badge {
+        display: inline-block;
+        background-color: #ff0000;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-left: 8px;
+    }
+    
+    .no-videos {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+    }
+    
+    .page-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">인기 동영상</h1>
+
+{% if videos %}
+    <div class="video-grid">
+        {% for video in videos %}
+        <a href="{% url 'video_detail' video.pk %}" style="text-decoration: none;">
+            <div class="video-card">
+                {% if video.thumbnail %}
+                    <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" class="video-thumbnail">
+                {% else %}
+                    <div class="video-thumbnail" style="display: flex; align-items: center; justify-content: center; background-color: #333;">
+                        <svg viewBox="0 0 24 24" style="width: 64px; height: 64px; fill: #666;">
+                            <path d="M10 8.64L15.27 12 10 15.36V8.64M8 5v14l11-7L8 5z"/>
+                        </svg>
+                    </div>
+                {% endif %}
+                <div class="video-info">
+                    <h3 class="video-title">
+                        {{ video.title }}
+                        {% if video.is_private %}
+                            <span class="private-badge">비공개</span>
+                        {% endif %}
+                    </h3>
+                    <div class="video-meta">
+                        조회수 {{ video.views|default:0 }}회 · {{ video.created_at|date:"Y년 m월 d일" }}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="no-videos">
+        <h2>아직 동영상이 없습니다.</h2>
+        <p>관리자가 동영상을 업로드하면 여기에 표시됩니다.</p>
+    </div>
+{% endif %}
+{% endblock %}

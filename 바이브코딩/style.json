@@ -1,0 +1,255 @@
+{
+  "designSystem": {
+    "name": "Apple Homepage Style Guide",
+    "version": "1.0",
+    "description": "애플 홈페이지 디자인 시스템 - 바이브 코딩용 참고 자료"
+  },
+
+  "colors": {
+    "primary": {
+      "background": "#FFFFFF",
+      "backgroundDark": "#000000",
+      "text": "#1d1d1f",
+      "textSecondary": "#6e6e73",
+      "textLight": "#f5f5f7"
+    },
+    "accent": {
+      "blue": "#0071e3",
+      "blueGradientStart": "#5599f7",
+      "blueGradientEnd": "#4c7bcc",
+      "sportBlue": "#021e54",
+      "sportBlueLight": "#79c1e1"
+    },
+    "interactive": {
+      "link": "#0066cc",
+      "linkHover": "#0077ed",
+      "buttonPrimary": "#0071e3",
+      "buttonSecondary": "transparent"
+    },
+    "surface": {
+      "card": "#fbfbfd",
+      "elevated": "#f5f5f7",
+      "overlay": "rgba(0, 0, 0, 0.8)"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "primary": "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "display": "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif",
+      "text": "'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif"
+    },
+    "fontSize": {
+      "xs": "12px",
+      "sm": "14px",
+      "base": "17px",
+      "lg": "19px",
+      "xl": "21px",
+      "2xl": "24px",
+      "3xl": "28px",
+      "4xl": "32px",
+      "5xl": "40px",
+      "6xl": "48px",
+      "7xl": "56px",
+      "8xl": "64px",
+      "9xl": "80px"
+    },
+    "fontWeight": {
+      "light": "300",
+      "regular": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700"
+    },
+    "lineHeight": {
+      "tight": "1.0",
+      "snug": "1.2",
+      "normal": "1.4",
+      "relaxed": "1.47",
+      "loose": "1.6"
+    },
+    "letterSpacing": {
+      "tighter": "-0.05em",
+      "tight": "-0.02em",
+      "normal": "0",
+      "wide": "0.02em"
+    }
+  },
+
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "2xl": "32px",
+    "3xl": "40px",
+    "4xl": "48px",
+    "5xl": "64px",
+    "6xl": "80px",
+    "7xl": "96px",
+    "8xl": "128px"
+  },
+
+  "layout": {
+    "maxWidth": {
+      "content": "980px",
+      "wide": "1280px",
+      "full": "100%"
+    },
+    "breakpoints": {
+      "mobile": "320px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1440px"
+    },
+    "grid": {
+      "columns": 12,
+      "gap": "20px",
+      "gapMobile": "16px"
+    }
+  },
+
+  "components": {
+    "navigation": {
+      "height": "44px",
+      "heightCompact": "48px",
+      "background": "rgba(255, 255, 255, 0.8)",
+      "backdropFilter": "saturate(180%) blur(20px)",
+      "iconSize": {
+        "regular": "14px",
+        "compact": "17px"
+      },
+      "padding": "0 22px"
+    },
+    "button": {
+      "primary": {
+        "background": "#0071e3",
+        "color": "#ffffff",
+        "padding": "12px 22px",
+        "borderRadius": "980px",
+        "fontSize": "17px",
+        "fontWeight": "400"
+      },
+      "secondary": {
+        "background": "transparent",
+        "color": "#0071e3",
+        "border": "none",
+        "padding": "12px 22px",
+        "borderRadius": "980px",
+        "fontSize": "17px",
+        "fontWeight": "400"
+      },
+      "hover": {
+        "primaryBackground": "#0077ed",
+        "secondaryBackground": "rgba(0, 113, 227, 0.08)"
+      }
+    },
+    "card": {
+      "background": "#ffffff",
+      "borderRadius": "18px",
+      "padding": "0",
+      "shadow": "none",
+      "overflow": "hidden"
+    },
+    "link": {
+      "color": "#0066cc",
+      "textDecoration": "none",
+      "hoverColor": "#0077ed",
+      "activeColor": "#0055b3"
+    }
+  },
+
+  "effects": {
+    "borderRadius": {
+      "none": "0",
+      "sm": "4px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "18px",
+      "2xl": "24px",
+      "full": "9999px"
+    },
+    "shadow": {
+      "none": "none",
+      "sm": "0 1px 3px rgba(0, 0, 0, 0.12)",
+      "md": "0 4px 6px rgba(0, 0, 0, 0.1)",
+      "lg": "0 10px 15px rgba(0, 0, 0, 0.1)",
+      "xl": "0 20px 25px rgba(0, 0, 0, 0.1)"
+    },
+    "transition": {
+      "fast": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
+      "base": "200ms cubic-bezier(0.4, 0, 0.2, 1)",
+      "slow": "300ms cubic-bezier(0.4, 0, 0.2, 1)",
+      "slower": "500ms cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "backdropBlur": {
+      "sm": "blur(8px)",
+      "md": "blur(12px)",
+      "lg": "blur(20px)"
+    }
+  },
+
+  "patterns": {
+    "hero": {
+      "minHeight": "580px",
+      "textAlign": "center",
+      "background": "linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%)"
+    },
+    "section": {
+      "padding": "60px 0",
+      "paddingMobile": "40px 0"
+    },
+    "container": {
+      "padding": "0 22px",
+      "paddingMobile": "0 16px",
+      "maxWidth": "980px",
+      "margin": "0 auto"
+    }
+  },
+
+  "accessibility": {
+    "focusRing": {
+      "color": "#0071e3",
+      "width": "4px",
+      "offset": "2px",
+      "style": "solid"
+    },
+    "minTouchTarget": "44px",
+    "minTextSize": "12px"
+  },
+
+  "animation": {
+    "easing": {
+      "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "in": "cubic-bezier(0.4, 0, 1, 1)",
+      "out": "cubic-bezier(0, 0, 0.2, 1)",
+      "inOut": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "duration": {
+      "fast": "150ms",
+      "normal": "200ms",
+      "slow": "300ms",
+      "slower": "500ms"
+    }
+  },
+
+  "usage": {
+    "description": "이 style.json 파일은 애플 홈페이지의 디자인 시스템을 정리한 것입니다.",
+    "howToUse": [
+      "색상: colors 객체에서 primary, accent, interactive 색상 팔레트 참고",
+      "타이포그래피: typography 객체에서 폰트, 크기, 두께 참고",
+      "간격: spacing 객체에서 일관된 여백 값 사용",
+      "컴포넌트: components 객체에서 버튼, 카드, 링크 스타일 참고",
+      "레이아웃: layout 객체에서 그리드 시스템과 브레이크포인트 참고",
+      "효과: effects 객체에서 둥근 모서리, 그림자, 전환 효과 참고"
+    ],
+    "tips": [
+      "애플 디자인의 핵심은 미니멀리즘과 화이트스페이스입니다",
+      "큰 타이포그래피와 충분한 여백을 활용하세요",
+      "부드러운 전환 효과로 사용자 경험을 향상시키세요",
+      "모바일 우선 접근 방식을 사용하세요",
+      "접근성을 항상 고려하세요"
+    ]
+  }
+}
