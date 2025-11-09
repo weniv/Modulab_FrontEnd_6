@@ -1,0 +1,9 @@
+h1 {
+  color: orange;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  /* 아래 url 내부에 경로를 넣어보세요!  */
+  background: no-repeat url("../images/favicon.png") center;
+}
