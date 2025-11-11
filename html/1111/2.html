@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강사 개인정보</title>
+  </head>
+  <body>
+    <!-- 1. td -->
+    <!-- 2. tr -->
+    <!-- 3. thead, tbody, tfoot -->
+    <!-- 4. colspan/rowspan -->
+    <!-- 5. th -->
+    <!-- 6. scope -->
+    <table>
+      <thead>
+        <tr>
+          <th colspan="4" scope="colgroup">강사 개인정보</th>
+          <!-- <th>강사 개인정보</th>
+          <th>강사 개인정보</th>
+          <th>강사 개인정보</th> -->
+        </tr>
+        <tr>
+          <th scope="col">강의 시수 구분</th>
+          <th scope="col">이름</th>
+          <th scope="col">나이</th>
+          <th scope="col">거주지</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="2" scope="rowgroup">보조강사</th>
+          <th scope="row">rosy</th>
+          <td>52</td>
+          <td>브리즈번</td>
+        </tr>
+        <tr>
+          <!-- <td>보조강사</td> -->
+          <th scope="row">zeezee</th>
+          <td>18</td>
+          <td>제주</td>
+        </tr>
+        <tr>
+          <th rowspan="2" scope="rowgroup">주강사</th>
+          <th scope="row">licat</th>
+          <td>35</td>
+          <td>도쿄</td>
+        </tr>
+        <tr>
+          <!-- <th>주강사</th> -->
+          <th scope="row">wade</th>
+          <td>28</td>
+          <td>파리</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
