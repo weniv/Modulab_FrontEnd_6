@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form 태그 실습 1</title>
+  </head>
+  <body>
+    <form action="#" method="get" autocomplete="off">
+      <div>
+        <label for="id">아이디</label>
+        <input
+          type="text"
+          id="id"
+          name="id"
+          placeholder="아이디를 입력해주세요"
+          required
+        />
+      </div>
+      <div>
+        <label for="pw">비밀번호</label>
+        <input type="password" id="pw" name="pw" />
+      </div>
+      <div>
+        <label for="username">닉네임</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <input type="submit" />
+    </form>
+  </body>
+</html>
