@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <!-- <dialog></dialog> -->
+    <div>
+      <header>
+        <h2>로그인 또는 회원가입</h2>
+        <button>
+          <!-- 1. 첫번째 방법 -->
+          <img src="./src/close.png" alt="창 닫기" />
+          <!-- 2. 두번째 방법 -->
+          <!-- <img src="./src/close.png" alt="">
+          <span>창 닫기</span> -->
+          <!-- span을 스크린리더만 읽을 수 있게 처리 가능 -->
+        </button>
+      </header>
+      <section>
+        <h3>로그인</h3>
+        <p>위니브에서 여러분의 궁금증을 해결하세요! :)</p>
+        <form action="">
+          <!-- 하단의 label 태그는 나중에 시각적으로 보이지 않게 지워주기 -->
+          <label for="id">아이디</label>
+          <input type="text" placeholder="아이디" id="id" />
+          <label for="pw">비밀번호</label>
+          <input type="password" placeholder="비밀번호" id="pw" />
+          <input type="checkbox" name="" id="keepLoggedIn" />
+          <label for="keepLoggedIn">
+            <!-- <img src="./src/check-box.png" alt=""> -->
+            로그인 상태 유지</label
+          >
+          <button type="submit">로그인</button>
+        </form>
+        <ul>
+          <li>
+            <a href="">회원가입</a>
+          </li>
+          <li>
+            <a href="">아이디/비밀번호 찾기</a>
+          </li>
+        </ul>
+      </section>
+      <span>또는</span>
+
+      <section>
+        <h3>소셜 계정으로 로그인</h3>
+        <ul>
+          <li>
+            <a href="/google">
+              <img src="./src/google-logo.png" alt="구글 로고 이미지" />
+              <p>구글 계정으로 로그인</p>
+            </a>
+          </li>
+          <li>
+            <a href="/facebook">
+              <img src="./src/facebook-logo.png" alt="페이스북 로고 이미지" />
+              <p>페이스북 계정으로 로그인</p>
+            </a>
+          </li>
+          <li>
+            <a href="/naver">
+              <img src="./src/naver-logo.png" alt="네이버 로고 이미지" />
+              <p>네이버 계정으로 로그인</p>
+            </a>
+          </li>
+          <li>
+            <a href="/kakao">
+              <img src="./src/message-circle.png" alt="카카오 로고 이미지" />
+              <p>카카오톡 계정으로 로그인</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
