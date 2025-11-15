@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 전체선택자 * */
+            * {
+                /* 초기화할때 사용. 브라우저의 기본 스타일을 제거한다 = 초기화 */
+                /* 상속되지 않는 속성은 전체선택자, 상속되는 속성은 최상위(body)에 적용 */
+                margin: 0;
+            }
+
+            /* 태그선택자 */
+            /* 공통된 스타일을 지정할 때 */
+            h2 {
+                color: lightblue;
+            }
+
+            /* 아이디 선택자 # */
+            #content {
+                color: red;
+            }
+
+            /* 클래스 선택자 . */
+            .font-blue {
+                color: blue;
+            }
+            .bg-yellow {
+                background-color: yellow;
+            }
+
+            /* 속성 선택자 [] */
+            /* 해당 속성을 가지고 있는지 */
+            [type] {
+                border: 10px solid greenyellow;
+            }
+            [id] {
+                background-color: lightpink;
+            }
+
+            /* 해당 속성에 해당 속성값이 있는지 */
+            [class="font-blue"] {
+                border: solid 5px skyblue;
+            }
+
+            /* 해당 속성에 특정 문자열을 포함하고 있는지 */
+            [class*="font-blue"] {
+                background-color: lightgreen;
+            }
+
+            /* 그룹 선택자 */
+            section,
+            h2,
+            #content,
+            .font-blue {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- id, class명 작성 규칙 -->
+        <!-- 문자, 숫자, 하이픈(-), 언더바(_)만 사용 가능 -->
+        <!-- 숫자로 시작하면 오류 -->
+        <!-- [기능-UI요소], [UI요소-기능] login-button, button-login] -->
+        <section>
+            <h2>Chapter10</h2>
+            <h3>10.1 선택자 기초</h3>
+            <p class="font-blue bg-yellow">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo atque enim libero, maxime eius magni saepe, numquam assumenda nam repudiandae quasi in autem vel possimus. Dolorem odit id
+                in! Sit!
+            </p>
+            <!-- 해시링크: 같은 페이지 내에서 특정 위치로 스크롤 이동을 할때 사용하는 링크 -->
+            <!-- 해시링크의 href 속성값과 같은 id 값을 가진 요소로 이동 -->
+            <a href="#content">눌러보세요!</a>
+            <button type="button">버튼1</button>
+            <button type="submit">버튼2</button>
+            <button>버튼3</button>
+        </section>
+
+        <section>
+            <h2>Chapter11</h2>
+        </section>
+
+        <div class="font-blue">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum esse beatae nihil ab eius minima! Animi deleniti, quod est vitae aliquid magnam nihil eum voluptatem assumenda tenetur
+            placeat voluptate exercitationem!
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <!-- 해시링크의 href 속성값과 같은 id 값을 가진 요소로 이동 -->
+        <div id="content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum esse beatae nihil ab eius minima! Animi deleniti, quod est vitae aliquid magnam nihil eum voluptatem assumenda tenetur
+            placeat voluptate exercitationem!
+        </div>
+    </body>
+</html>

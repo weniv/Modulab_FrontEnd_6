@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 클래스 + 유형 선택자 */
+            /* 10점 + 1점 */
+            .ul a {
+                color: yellow;
+            }
+
+            /* 클래스 선택자 */
+            /* 10점 */
+            .click {
+                color: green;
+                background: black;
+            }
+
+            /* 유형 선택자 */
+            /* 1 * 12 = 12 */
+            html body main section article div ul li p strong span a {
+                /* 3. 중요성의 원칙 */
+                background: purple !important;
+                color: blue;
+            }
+
+            /* 상속의 가중치 = 0 */
+            .strong {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section>
+                <article>
+                    <div>
+                        <ul class="ul">
+                            <li>
+                                <p>
+                                    <strong class="strong">
+                                        <span>
+                                            <a href="#" class="click"> 1. 이 글자는 어떤 색일까요? 2. 배경색은 어떤 색일까요? </a>
+                                        </span>
+                                    </strong>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </body>
+</html>

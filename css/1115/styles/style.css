@@ -1,0 +1,9 @@
+@import url("./reset.css");
+@import url("./font.css");
+@import url("./layout.css");
+@import url("./main.css");
+/* import 구문은 문서의 최상단에 위치해야만 합니다! */
+
+p {
+    font-weight: 900;
+}

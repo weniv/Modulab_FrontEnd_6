@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 자손 선택자. section 요소의 자손 중 p */
+            section p {
+                background-color: yellow;
+            }
+
+            /* 자식 선택자. 자손과 자식은 다르다! */
+            /* section 요소의 자식 중 p */
+            section > p {
+                border: solid 5px salmon;
+            }
+
+            /* 일반 형제 선택자 */
+            /* section 뒤에 나오는 형제 p */
+            section ~ p {
+                background-color: lightblue;
+            }
+
+            /* 인접 형제 선택자 */
+            /* section 바로 뒤 형제 p */
+            section + p {
+                border: solid 5px lawngreen;
+            }
+        </style>
+    </head>
+    <body>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <section>
+            <div>
+                <p>lorem ipsum dolor sit amet</p>
+            </div>
+            <p>lorem ipsum dolor sit amet</p>
+            <p>lorem ipsum dolor sit amet</p>
+        </section>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+    </body>
+</html>

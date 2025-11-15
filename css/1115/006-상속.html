@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                /* 상속되는 속성 */
+                color: red;
+                font-size: 24px;
+                font-weight: 900;
+                /* 상속되지 않는 속성 */
+                border: 5px solid black;
+            }
+
+            p {
+                /* 상속은 직접 작성된 스타일보다 우선순위가 낮다. */
+                color: lightgreen;
+                /* 부모의 속성값을 상속. 주로 상속되지 않는 속성을 강제로 상속시킬 때 사용. */
+                border: inherit;
+                font-size: initial; /* CSS 명세서에 작성된 초깃값으로 변경 */
+                font-weight: unset; /* 상속되는 속성 -> inherit */
+                border: unset; /* 상속이 되지 않는 속성 => initial */
+                all: initial; /* 모든 CSS 속성을 한번에 조작. */
+                color: orange; /* all 속성 뒤에 작성한 CSS는 그대로 적용된다. */
+
+              }
+
+            h2 {
+              /* 아래 코드를 reset.css로 가정 */
+              font-size: 10px;
+              font-size: revert; /* 브라우저의 기본 스타일로 변경 */
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div>
+            할머니
+            <p>
+                엄마
+                <h2>딸</h2>
+            </p>
+        </div>
+    </body>
+</html>

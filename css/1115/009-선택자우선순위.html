@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 1. 후자 우선의 원칙 */
+            p {
+                color: rosybrown;
+            }
+
+            p {
+                color: royalblue;
+            }
+
+            p {
+                color: yellowgreen;
+            }
+
+            /* 2. 구체성의 원칙 */
+            /* 10점 */
+            .text {
+                color: orange;
+            }
+
+            /* 1점 */
+            p {
+                color: green;
+            }
+
+            /* 10점 */
+            .text {
+                color: orange;
+            }
+
+            /* 10점 + 10점 */
+            .text-cont .text {
+                color: salmon;
+            }
+
+            #container {
+                /* 상속 0점 */
+                color: purple;
+            }
+
+            /* 100점 + 10점 */
+            #container .text {
+                color: teal;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Hello world</p>
+
+        <div id="container" class="text-cont">
+            <p class="text">Hello world</p>
+        </div>
+    </body>
+</html>
