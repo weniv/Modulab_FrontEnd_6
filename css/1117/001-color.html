@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .keyword {
+                color: cadetblue;
+                border: solid 2px pink;
+                background-color: mediumorchid;
+            }
+
+            .hex {
+                /* 위 아래 동일 색상. #ff00ff */
+                color: #f0f;
+                color: #ffaa00aa; /* 마지막 두자리는 투명도(선택값), 00 완전 투명, FF 완전 불투명 */
+            }
+
+            .rgb {
+                color: rgb(255, 130, 10);
+            }
+
+            .rgba {
+                color: rgba(255, 130, 10, 0.3);
+            }
+
+            .current-color {
+                /* color: greenyellow; */
+                /* 명시되지 않은 경우: 부모에게서 상속받은 color값을 사용 */
+                border: solid 5px currentColor;
+            }
+
+            .color {
+                color: hotpink;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="color">
+            <p class="keyword">키워드로 설정한 색상</p>
+            <p class="hex">HEX 코드로 설정한 색상</p>
+            <p class="rgb">RGB로 설정한 색상</p>
+            <p class="rgba">RGBA로 설정한 색상</p>
+            <p class="current-color">currentColor</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap");
+
+            @font-face {
+                font-family: "Aggravo";
+                src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff") format("woff");
+                font-weight: 300;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Pretendard";
+                src: url("./fonts/Pretendard-Regular.woff") format("woff");
+                font-weight: 400;
+                font-style: none;
+            }
+
+            @font-face {
+                font-family: "Pretendard";
+                src: url("./fonts/Pretendard-Bold.woff") format("woff");
+                font-weight: 700;
+                font-style: none;
+            }
+
+            .nanum {
+                font-family: "Nanum Pen Script", cursive;
+            }
+
+            .momo {
+                font-family: "Momo Trust Display", sans-serif;
+            }
+
+            .aggravo {
+                font-family: "Aggravo", sans-serif;
+            }
+
+            .regular {
+                font-family: "Pretendard", sans-serif;
+                font-weight: 400;
+            }
+
+            .bold {
+                font-family: "Pretendard", sans-serif;
+                font-weight: 700;
+            }
+
+            /* 보통 실무에서 사용하는 방법 */
+            /* body {
+              font-family: "Pretendard", sans-serif;
+            }
+
+            .bold {
+              font-weight: 700;
+            } */
+
+            .pixel {
+                font-size: 20px;
+            }
+
+            .parent {
+                font-size: 10px;
+            }
+
+            .em {
+                /* 부모 요소의 폰트 사이즈 기준 */
+                font-size: 2em;
+            }
+
+            .rem {
+                /* 루트요소(html)의 폰트 사이즈 기준 */
+                /* 일반적인 브라우저에서 html의 기본 글꼴 사이즈 16px */
+                font-size: 2rem;
+            }
+
+            /* 실무에서 사용하는 방법 */
+            html {
+                font-size: 10px;
+            }
+
+            body {
+                font-size: 1.6rem;
+            }
+
+            .text {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Nanum Pen Script</p>
+        <p class="nanum">Nanum Pen Script</p>
+        <p class="momo">Momo Trust Display Static</p>
+        <p class="aggravo">어그로가 필요한 순간엔 어그로체를</p>
+        <p class="regular">Pretendard Regular</p>
+        <p class="bold">Pretendard Bold</p>
+
+        <hr />
+        <div class="parent">
+            <h2>글꼴의 크기</h2>
+            <p class="pixel">픽셀로 적용한 폰트 크기</p>
+            <p class="em">em으로 적용한 폰트 크기</p>
+            <p class="rem">rem으로 적용한 폰트 크기</p>
+            <p class="text">rem을 사용해서 10px을 만들어주세요!</p>
+        </div>
+    </body>
+</html>

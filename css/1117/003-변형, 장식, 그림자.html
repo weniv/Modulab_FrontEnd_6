@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .text-transform {
+                text-transform: uppercase; /* 모든 글자를 대문자로 */
+                text-transform: lowercase; /* 모든 글자를 소문자로 */
+                text-transform: capitalize; /* 단어의 첫글자를 대문자로 */
+            }
+
+            /* 첫 번째 글자에만 스타일을 줄 수 있는 가상요소 */
+            .text-transform::first-letter {
+                font-size: 32px;
+                font-weight: bold;
+                color: red;
+                text-transform: lowercase;
+            }
+
+            .decoration .line {
+                text-decoration-line: overline underline line-through;
+                text-decoration-color: blueviolet;
+                text-decoration-style: wavy;
+                text-decoration-thickness: 10px;
+                /* 축약형 */
+                text-decoration: 2px blueviolet underline wavy;
+            }
+
+            .text-shadow {
+                text-shadow: 2px 2px 4px red, -2px -2px 4px blue;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="text-transform">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis magni repellendus, et cumque id labore perspiciatis, rerum quas consectetur maxime totam debitis nisi quod, nam
+            laboriosam temporibus. Ex, id a?
+        </p>
+
+        <div class="decoration">
+            <p class="line">텍스트 장식하기</p>
+        </div>
+
+        <p class="text-shadow">글씨의 그림자 효과</p>
+    </body>
+</html>

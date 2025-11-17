@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box1,
+            .box2 {
+                border: solid 2px salmon;
+            }
+
+            .box1 {
+                text-align: left;
+                text-align: center;
+                text-align: right;
+                text-align: justify;
+            }
+
+            .vertical div:not([class]) {
+                line-height: 2.5;
+                border: 1px dashed gray;
+                margin: 10px;
+            }
+
+            .box {
+                line-height: 1;
+                background-color: lightgreen;
+                display: inline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda illo quaerat corrupti unde, corporis perspiciatis cupiditate sapiente porro delectus, quasi at commodi laboriosam iusto
+            atque! Dolores minima eligendi asperiores nihil.
+        </div>
+        <div class="box2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda illo quaerat corrupti unde, corporis perspiciatis cupiditate sapiente porro delectus, quasi at commodi laboriosam iusto
+            atque! Dolores minima eligendi asperiores nihil.
+        </div>
+        <hr />
+        <div class="vertical">
+            <div>
+                텍스트
+                <div class="box baseline">baseline</div>
+            </div>
+            <div>
+                텍스트
+                <span style="font-size: 40px">큰 글자</span>
+                <span style="font-size: 20px">중간 글자</span>
+                <div class="box top">top</div>
+            </div>
+            <div>
+                텍스트
+                <div class="box middle">middle</div>
+            </div>
+            <div>
+                텍스트
+                <div class="box bottom">bottom</div>
+            </div>
+            <div>
+                텍스트
+                <span style="font-size: 40px">큰 글자</span>
+                <div class="box text-top">text-top</div>
+            </div>
+            <div>
+                텍스트
+                <div class="box text-bottom">text-btm</div>
+            </div>
+            <hr />
+            <div>
+                텍스트
+                <div class="box baseline">baseline</div>
+                <div class="box top">top</div>
+                <div class="box middle">middle</div>
+                <div class="box bottom">bottom</div>
+                <div class="box text-top">text-top</div>
+                <div class="box text-bottom">text-btm</div>
+            </div>
+        </div>
+    </body>
+</html>
