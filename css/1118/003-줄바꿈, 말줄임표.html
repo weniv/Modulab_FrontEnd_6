@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            p {
+                border: solid 2px salmon;
+                width: 200px;
+                word-break: normal;
+            }
+
+            .word-break {
+                /* 글자(문자)단위로 줄바꿈이 일어남 */
+                word-break: break-all;
+                /* 단어 단위로 줄바꿈이 일어남 */
+                word-break: keep-all;
+                /* 긴 단어가 있을겨우 -> 중간에 강제로 줄바꿈이 일어남 */
+                overflow-wrap: break-word;
+            }
+
+            .overflow-clip {
+                text-overflow: clip; /* 넘치는 텍스트 자름 */
+                overflow: hidden; /* 넘치는 부분 숨김 */
+                white-space: nowrap; /* 줄바꿈 안함 */
+            }
+
+            .ellipsis {
+                text-overflow: ellipsis; /* 넘치는 텍스트 자름 */
+                overflow: hidden; /* 넘치는 부분 숨김 */
+                white-space: nowrap; /* 줄바꿈 안함 */
+            }
+
+            .multi-ellipsis {
+                overflow: hidden;
+                /* webkit 비표준 css -> 호환성 체크 */
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3; /* 원하는 라인 수 */
+            }
+        </style>
+    </head>
+    <body>
+        <h2>원본 텍스트</h2>
+        <p>This is a long English text with verylongwordthatwilloverflowthecontainer and 영어와 한글이 섞여 있는 텍스트입니다. 매우매우매우매우긴한글은 어떻게 보일까요?</p>
+        <h2>텍스트 줄바꿈</h2>
+        <p class="word-break">This is a long English text with verylongwordthatwilloverflowthecontainer and 영어와 한글이 섞여 있는 텍스트입니다. 매우매우매우매우긴한글은 어떻게 보일까요?</p>
+        <h2>한줄</h2>
+        <p class="overflow-clip">This is a long English text with verylongwordthatwilloverflowthecontainer and 영어와 한글이 섞여 있는 텍스트입니다. 매우매우매우매우긴한글은 어떻게 보일까요?</p>
+        <h2>한줄 + 말줄임표</h2>
+        <p class="ellipsis">This is a long English text with verylongwordthatwilloverflowthecontainer and 영어와 한글이 섞여 있는 텍스트입니다. 매우매우매우매우긴한글은 어떻게 보일까요?</p>
+        <h2>여러줄 + 말줄임표</h2>
+        <p class="multi-ellipsis">This is a long English text with verylongwordthatwilloverflowthecontainer and 영어와 한글이 섞여 있는 텍스트입니다. 매우매우매우매우긴한글은 어떻게 보일까요?</p>
+    </body>
+</html>

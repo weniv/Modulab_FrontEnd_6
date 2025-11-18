@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .parent {
+                background-color: lightgreen;
+                width: 200px;
+                height: 150px;
+                font-size: 40px;
+            }
+
+            .child {
+                background-color: coral;
+                width: 50%;
+                /* height: 50%; */
+                width: 50vh;
+                /* height: 50vh; */
+                width: 50vmin;
+                width: 50vmax;
+                /* rem - html의 글자 크기 기준 */
+                font-size: 2rem;
+                /* 부모 요소의 글자 크기 기준 */
+                font-size: 3em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child">자식요소 입니다.</div>
+        </div>
+    </body>
+</html>

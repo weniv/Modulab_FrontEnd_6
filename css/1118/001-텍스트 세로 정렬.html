@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .vertical div:not([class]) {
+                line-height: 2.5;
+                border: 1px dashed gray;
+                margin: 10px;
+            }
+
+            .box {
+                line-height: 1;
+                background-color: lightgreen;
+                display: inline;
+            }
+
+            .baseline {
+                vertical-align: baseline;
+            }
+
+            .top {
+                vertical-align: top;
+            }
+
+            .middle {
+                vertical-align: middle;
+            }
+
+            .bottom {
+                vertical-align: bottom;
+            }
+
+            .text-top {
+                vertical-align: text-top;
+            }
+
+            .text-bottom {
+                vertical-align: text-bottom;
+            }
+
+            .img-cont {
+                background-color: lightseagreen;
+            }
+
+            .img-cont img {
+                vertical-align: bottom;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="vertical">
+            <div>
+                텍스트
+                <div class="box baseline">baseline</div>
+            </div>
+            <div>
+                텍스트
+                <span style="font-size: 40px">큰 글자</span>
+                <span style="font-size: 20px">중간 글자</span>
+                <!-- 형제 요소의 영향을 받음. 라인 박스 내에서 가장 높은 요소를 기준으로 정렬 -->
+                <div class="box top">top</div>
+            </div>
+            <div>
+                텍스트
+                <div class="box middle">middle</div>
+            </div>
+            <div>
+                텍스트
+                <div class="box bottom">bottom</div>
+            </div>
+            <div>
+                텍스트
+                <span style="font-size: 40px">큰 글자</span>
+                <div class="box text-top">text-top</div>
+            </div>
+            <div>
+                텍스트
+                <span style="font-size: 40px">큰 글자</span>
+                <div class="box text-bottom">text-btm</div>
+            </div>
+            <hr />
+            <div>
+                텍스트
+                <div class="box baseline">baseline</div>
+                <div class="box top">top</div>
+                <div class="box middle">middle</div>
+                <div class="box bottom">bottom</div>
+                <div class="box text-top">text-top</div>
+                <div class="box text-bottom">text-btm</div>
+            </div>
+        </div>
+
+        <span class="img-cont">
+            <img src="./images/weniv-binky.png" alt="Placeholder" />
+        </span>
+    </body>
+</html>

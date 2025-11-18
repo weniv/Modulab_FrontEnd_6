@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .normal-line-height {
+                line-height: normal;
+                text-indent: 2em;
+                text-indent: -1em;
+            }
+
+            .increased-line-height {
+                line-height: 1.5;
+                line-height: 40px;
+                /* line-height: 40px; -> 권장하지 않음. */
+                /* 단위 없는 숫자 방식이 더 유연하고 권장. */
+                span {
+                    font-size: 20px;
+                }
+            }
+
+            .normal-spacing {
+                letter-spacing: normal;
+            }
+
+            .wide-spacing {
+                letter-spacing: 0.5em;
+            }
+
+            .narrow-spacing {
+                letter-spacing: -0.1em;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="normal-line-height">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem totam voluptas quis. Sunt exercitationem vel distinctio aspernatur aut! Qui, consequuntur quidem soluta recusandae laudantium
+            quisquam dolorum aperiam iusto sint earum.
+        </p>
+        <p class="increased-line-height">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum laudantium iste autem soluta, ipsum quas modi dolores veniam expedita consequatur aliquam, recusandae minus non quidem,
+            deserunt voluptatem. Consequatur, illum possimus.
+            <span
+                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, beatae ullam reiciendis placeat ducimus quam possimus ad praesentium maxime fugiat similique rem culpa iure
+                optio dignissimos asperiores hic recusandae id!</span
+            >
+        </p>
+
+        <h2 class="normal-spacing">일반 자간을 설정해보겠습니다.</h2>
+        <h2 class="wide-spacing">넓은 자간을 설정해보겠습니다.</h2>
+        <h2 class="narrow-spacing">좁은 자간을 설정해보겠습니다.</h2>
+    </body>
+</html>
