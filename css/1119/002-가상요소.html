@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .content {
+                border: solid 2px hotpink;
+                background-color: pink;
+            }
+
+            .content::before {
+                display: block;
+                content: "";
+                border: 2px solid purple;
+                width: 20px;
+                height: 20px;
+                background-color: cornflowerblue;
+            }
+
+            .content::after {
+                content: "오늘은 수요일입니다!";
+                color: chartreuse;
+            }
+
+            /* 가상요소는 셀프클로징태그에 사용할 수 없음. */
+            .before-test::before {
+                content: "셀프클로징 태그 가상요소 테스트";
+            }
+
+            /* ::before 가상요소를 사용한 리스트 스타일 */
+            .list li {
+                list-style: none;
+            }
+
+            .list li::before {
+                content: "";
+                display: inline-block;
+                margin-right: 5px;
+                width: 5px;
+                height: 5px;
+                background-color: aqua;
+            }
+
+            /* ::marker 가상요소를 사용한 리스트 스타일 */
+            .marker-list li::marker {
+                content: "*";
+                color: brown;
+                font-size: 20px;
+            }
+
+            .custom-bullets li::marker {
+                content: "🍎";
+            }
+
+            input::placeholder {
+                color: red;
+                font-size: 10px;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="content">hello world</p>
+        <input type="text" class="before-test" />
+
+        <ul class="list">
+            <li>list 1</li>
+            <li>list 2</li>
+            <li>list 3</li>
+            <li>list 4</li>
+            <li>list 5</li>
+        </ul>
+
+        <ul class="marker-list">
+            <li>list 1</li>
+            <li>list 2</li>
+            <li>list 3</li>
+            <li>list 4</li>
+            <li>list 5</li>
+        </ul>
+
+        <ul class="custom-bullets">
+            <li>사과</li>
+            <li>바나나</li>
+            <li>오렌지</li>
+        </ul>
+
+        <input type="text" placeholder="검색어를 입력해주세요." />
+    </body>
+</html>

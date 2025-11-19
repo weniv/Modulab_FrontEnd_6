@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            li:first-child {
+                border: solid 2px salmon;
+            }
+
+            li:last-child {
+                border: solid 2px purple;
+            }
+
+            body > ul:first-child {
+                /* background-color: lightcyan; */
+            }
+
+            /* body의 직계 자식의 경우 last-child 사용할 수 없음 */
+            body > ul:last-child {
+                background-color: lightpink;
+            }
+
+            /* 정수값 */
+            li:nth-child(3) {
+                color: red;
+            }
+
+            /* ul의 자손 중 선택 */
+            ul :nth-child(3) {
+                color: red;
+            }
+
+            /* 키워드 - 홀수 */
+            li:nth-child(odd) {
+                background-color: lightgreen;
+            }
+
+            /* 키워드 - 짝수 */
+            li:nth-child(even) {
+                background-color: lightsalmon;
+            }
+
+            /* 수식 an + b */
+            /* n: 0, 1, 2, 3... */
+            /* a - 주기, b -시작점 */
+            li:nth-child(n + 3) {
+                border: solid 2px black;
+            }
+
+            /* 처음 3개의 요소 */
+            li:nth-child(-n + 3) {
+                color: blue;
+            }
+
+            /* 수식 - 자주 사용되는 패턴들
+            * 2n -> 짝수
+            * 2n + 1 -> 홀수
+            * 3n -> 3의 배수
+            * -n + 3 -> 처음 3개
+            * n + 4 -> 4번째부터 */
+
+            h2:nth-of-type(2) {
+                color: lawngreen;
+            }
+
+            div :nth-child(1) {
+                background-color: lightpink;
+            }
+
+            div :nth-of-type(1) {
+                background-color: cornflowerblue;
+            }
+
+            div :only-of-type {
+                background-color: coral;
+            }
+
+            div :not(:first-child) {
+                border: 5px solid orange;
+            }
+
+            /* h1 a, h2 a, h3 a */
+            :is(h1, h2, h3) a {
+                color: red;
+            }
+
+            /* 구체성의 원칙 - 가중치 점수가 0점 */
+            :where(h1, h2, h3) a {
+                background-color: cadetblue;
+                color: pink;
+            }
+
+            h3:has(a) {
+                border: solid 2px orange;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+            <li>item 5</li>
+            <li>item 6</li>
+            <li>item 7</li>
+            <li>item 8</li>
+            <li>item 9</li>
+            <li>item 10</li>
+        </ul>
+        <ul>
+            <li>item 1</li>
+        </ul>
+
+        <div>
+            <h2>첫번째 제목</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti doloremque officiis blanditiis totam, itaque harum quo ratione, facere rem quasi dolores laboriosam quae eum sequi
+                maiores tempore corrupti. Harum, quod?
+            </p>
+            <span>첫번째 태그</span>
+            <h2>두번째 제목</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti doloremque officiis blanditiis totam, itaque harum quo ratione, facere rem quasi dolores laboriosam quae eum sequi
+                maiores tempore corrupti. Harum, quod?
+            </p>
+        </div>
+
+        <section>
+            <h1><a href="#">h1의 링크</a></h1>
+            <h2><a href="#">h2의 링크</a></h2>
+            <h3><a href="#">h3의 링크</a></h3>
+            <h3>소제목</h3>
+        </section>
+    </body>
+</html>

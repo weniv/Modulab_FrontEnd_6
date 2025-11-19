@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            section .card:nth-child(1) {
+                background-color: #ff6b6b;
+            }
+            section .card:nth-child(2) {
+                background-color: #ffa06b;
+            }
+            section .card:nth-child(3) {
+                background-color: #ffd06b;
+            }
+            section .card:nth-child(4) {
+                background-color: #a0ff6b;
+            }
+            section .card:nth-child(5) {
+                background-color: #6bd4ff;
+            }
+            section .card:nth-child(6) {
+                background-color: #6b8cff;
+            }
+
+            /* section .card:is(:first-child, :last-child) */
+            section .card:first-child,
+            section .card:last-child {
+                border: dashed 5px #333;
+            }
+
+            section .card:nth-child(even) {
+                color: white;
+            }
+
+            .team-list li:first-child::marker {
+                content: "⭐️";
+            }
+
+            .team-list li:not(:first-child)::marker {
+                content: "✅";
+            }
+
+            .team-list li::after {
+                content: "팀원";
+                color: #888;
+                font-size: 0.8em;
+            }
+
+            .team-list li:first-child::after {
+                content: "팀장";
+                color: red;
+            }
+
+            /* 카드 기본 스타일 */
+            section .card {
+                padding: 15px;
+                display: inline-block;
+                margin: 10px;
+                border-radius: 10px;
+                background-color: #eee;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>프로젝트 팀 카드</h1>
+
+        <section>
+            <div class="card">HTML</div>
+            <div class="card">CSS</div>
+            <div class="card">JavaScript</div>
+            <div class="card">React</div>
+            <div class="card">TypeScript</div>
+            <div class="card">Next.js</div>
+        </section>
+
+        <h2>팀원 목록</h2>
+        <ul class="team-list">
+            <li>로지</li>
+            <li>하티</li>
+            <li>지지</li>
+            <li>웨이드</li>
+            <li>빙키</li>
+            <li>라이캣</li>
+        </ul>
+    </body>
+</html>
