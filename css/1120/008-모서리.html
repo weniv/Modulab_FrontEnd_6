@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: cornflowerblue;
+
+                /* 네 모서리 모두 동일 */
+                border-radius: 20px;
+                /* 왼쪽 위 + 오른쪽 아래 / 오른쪽 위 + 왼쪽 아래 */
+                border-radius: 10px 20px;
+                /* 왼쪽 위 / 오른쪽 위 + 왼쪽 아래 / 오른쪽 아래 */
+                border-radius: 10px 20px 30px;
+                /* 왼쪽 위 기준으로 시계방향 */
+                border-radius: 10px 20px 30px 40px;
+
+                /* 자기 자신의 widht, height 값을 기준으로 계산 */
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+    </body>
+</html>

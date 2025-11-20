@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+                background-color: lightgray;
+                margin-bottom: 20px;
+            }
+
+            .box1 {
+                /* 1px -> border-width */
+                /* solid -> border-style */
+                /* black -> border-color */
+                /* 작성 순서 무관 */
+                border: 1px solid black;
+
+                /* border-[방향]-[속성] */
+                border-right-width: 5px;
+                border-width: 5px 10px;
+
+                border-right-style: dotted;
+                border-left-style: double;
+
+                border-top-color: red;
+                border-bottom-color: blue;
+
+                /* 초기화 */
+                /* border: none; */
+            }
+
+            .box2 {
+                /* 기본값. width, height에 border, padding이 포함되어있지 않음 */
+                /* 요소의 사이즈를 계산하는데 어려움이 있음 */
+                box-sizing: content-box;
+                /* width, height가 포함하는 영역을 border영역까지로 늘림 */
+                /* 상속되지 않음. 전체 선택자를 사용해서 설정 */
+                box-sizing: border-box;
+                border: solid salmon 20px;
+                padding: 10px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+    </body>
+</html>

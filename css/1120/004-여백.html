@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                background-color: lightblue;
+                border: 1px solid black;
+                color: red;
+                width: min-content;
+
+                /* 안쪽 여백 */
+                /* 값이 1개: 상하좌우 동일 */
+                padding: 10px;
+                /* 값이 2개: 상하 좌우 */
+                padding: 10px 20px;
+                /* 값이 3개: 상 좌우 하 */
+                padding: 10px 20px 30px;
+                /* 값이 4개: 상 우 하 좌 (시계방향) */
+                padding: 10px 20px 30px 40px;
+
+                padding: 0;
+                /* top, bottom, right, left 따로 지정 가능 */
+                padding-right: 100px;
+
+                /* 외부여백 */
+                /* 값에 따라 적용되는 속성은 padding과 동일함 */
+                margin: 10px;
+                margin: 10px 20px 30px;
+                margin: 0;
+            }
+
+            /* margin을 사용한 요소 배치 */
+            .box1 {
+                /* 왼쪽에 가능한 많은 여백 -> 요소는 우측으로 이동 */
+                margin-left: auto;
+            }
+
+            .box2 {
+                /* 좌우 가능한 많은 여백을 동일하게 나눠가짐 -> 요소는 가운데로 이동 */
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+    </body>
+</html>

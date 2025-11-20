@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            :root {
+                /* 이름을 작성할 때는 "--이름: 저장할 값" */
+                --primary-color: #ff9832;
+                --background-color: #eee;
+                --gary-Lv1-color: #f3f5fa;
+
+                --primary-font: 18px;
+                --shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            }
+
+            [data-theme="dark"] {
+                --primary-color: #de831c;
+                --background-color: #000;
+            }
+
+            p {
+                /* css 변수는 어디서든 선언가능 */
+                --primary-color: yellow;
+            }
+
+            body {
+                /* 사용할 때는 var 안에 내가 사용할 변수 이름 */
+                background-color: var(--background-color);
+                color: var(--primary-color, #ff0000);
+            }
+        </style>
+    </head>
+    <body>
+        <p>hello world</p>
+    </body>
+</html>

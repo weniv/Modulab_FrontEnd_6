@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .width {
+                background-color: lightgreen;
+                margin-bottom: 10px;
+            }
+
+            .auto {
+                /* 기본값. 부모 요소를 기준 가질 수 있는 최대 너비 */
+                width: auto;
+            }
+
+            /* body {
+                width: 200px;
+            } */
+
+            .min {
+                /* 요소가 가질 수 있는 최소 너비 */
+                /* 영어 -> 가장 긴 단어 */
+                /* 한글 -> 한 문자 */
+                width: min-content;
+            }
+
+            .max {
+                /* 줄바꿈 없이 컨텐츠 기준 최대 너비 */
+                /* 부모 요소를 벗어날 수 없음 */
+                width: max-content;
+            }
+
+            .fit {
+                /* 공간이 충분하다면 max-content */
+                /* 공간이 부족하다면 줄바꿈 발생 */
+                /* 그러나 min-content보다는 작아지지 않음 */
+                width: fit-content;
+            }
+
+            .px {
+                width: 100px;
+            }
+
+            .box1,
+            .box2 {
+                background-color: lightcoral;
+                margin-bottom: 10px;
+                /* 기본값. 내용물(컨텐츠)의 높이만큼 자동으로 설정 */
+                /* height: auto; */
+                height: 200px;
+            }
+
+            .box3 {
+                background-color: lightseagreen;
+                /* 부모 요소의 높이값 기준. 부모 요소에 높이값이 지정되어 있어야 함. */
+                height: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="width auto">auto 속성을 적용한 요소</div>
+        <div class="width min">min-content 속성을 적용한 요소</div>
+        <div class="width min">속성을 적용한 요소</div>
+        <div class="width max">max-content 속성을 적용한 요소</div>
+        <div class="width fit">fit-content 속성을 적용한 요소</div>
+        <div class="width px">fit-content 속성을 적용한 요소</div>
+
+        <div class="box1">1</div>
+        <div class="box2">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem mollitia rerum molestiae sunt doloremque. Rerum mollitia pariatur minus voluptatum quis cum iste, ab saepe odio. Quod
+            aspernatur cumque quo dignissimos.
+            <div class="box3">child</div>
+        </div>
+    </body>
+</html>

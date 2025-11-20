@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box,
+            .text {
+                width: 200px;
+                height: 100px;
+
+                /* 외부 여백 */
+                /* 인라인 요소의 경우 좌,우만 적용 */
+                margin: 10px;
+            }
+
+            div {
+                background-color: lightblue;
+            }
+
+            /* 인라인요소는 width, height, 상하 margin 적용이 되지 않음 */
+            .text {
+                background-color: lightpink;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">Hello world</div>
+        <span class="text">Hello world</span>
+        <div>Hello world</div>
+    </body>
+</html>
