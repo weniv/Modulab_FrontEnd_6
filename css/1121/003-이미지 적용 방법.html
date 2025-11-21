@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* CSS background-image 사용해야하는 경우 */
+            /* 순수하게 디자인 목적의 장식용 이미지(히어로 섹션의 배경, 패턴, 장식용 이미지) */
+            /* 디자인적인 제어가 자유롭고 반응형 처리가 용이함 */
+            /* 접근성, SEO 불리 */
+
+            div {
+                height: 50vh;
+                /* 단축 속성. position / size 는 순서가 고정되어있음. size 단독으로 사용이 불가능 */
+                background: url("./images/weniv-binky.png") no-repeat center / contain;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 어떤 방식을 사용해야할까?
+        -> 이 이미지가 없으면 내용을 이해하기 어려운가?
+        YSE -> <img>
+        No -> CSS background-image -->
+
+        <div></div>
+        <!-- img 태그를 사용해야하는 경우 -->
+        <!--  의미있는 정보를 전달하는 이미지 (제품 사진, 프로필 사진, 로고)-->
+        <!-- alt로 대체 텍스트 제공(접근성), SEO -->
+        <!-- 반응형 처리, 디자인적인 제어 제한적 -->
+        <img src="./images/weniv-binky.png" alt="위니브 빙키 캐릭터" />
+    </body>
+</html>

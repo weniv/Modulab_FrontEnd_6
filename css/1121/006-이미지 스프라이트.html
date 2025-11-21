@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 이미지 스프라이트(Image Sprite) 기법이란?
+          여러 개의 작은 이미지를 하나의 큰 이미지 파일에 모아놓고, CSS의 background-position을 이용해서 필요한 부분만 보여주는 기법 */
+
+            .bg-weniv_logo {
+                width: 619px;
+                height: 143px;
+                background: url("./images/css_sprites.png") -10px -10px;
+            }
+
+            ul {
+                background-color: black;
+                list-style: none;
+            }
+
+            .bg-icon_star_fill {
+                width: 40px;
+                height: 40px;
+                /* background-position 음수인 이유?
+                양수를 쓰면 이미지가 오른쪽/아래로 이동해서 원하는 이미지가 요소 밖으로 나가버림
+                음수를 쓰면 이미지가 왼쪽/위로 이동해서 원하는 이미지를 요소의 위치로 가져올 수 있음 */
+                background: url("./images/css_sprites.png") -10px -173px;
+            }
+            .bg-icon_heart_fill {
+                width: 40px;
+                height: 40px;
+                background: url("./images/css_sprites.png") -130px -173px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="bg-weniv_logo"></h1>
+        <ul>
+            <li class="bg-icon_star_fill"></li>
+            <li class="bg-icon_heart_fill"></li>
+        </ul>
+    </body>
+</html>
