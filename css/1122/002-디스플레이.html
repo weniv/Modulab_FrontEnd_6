@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                margin-bottom: 10px;
+            }
+            p {
+                background-color: lightcoral;
+                width: 100px;
+                height: 100px;
+                margin: 100px 0;
+                /* 인라인 레벨 요소의 성격을 부여 */
+                display: inline;
+            }
+
+            .box2 span {
+                background-color: lightgreen;
+                width: 100px;
+                height: 100px;
+                margin: 100px 0;
+                /* 블록레벨 요소의 성격을 부여 */
+                display: block;
+            }
+
+            .box3 span {
+                background-color: lightseagreen;
+                width: 100px;
+                height: 100px;
+                margin: 100px 0;
+                /* 인라인 요소와 블록 요소의 특성을 결합 */
+                /* 인라인처럼 텍스트 흐름에 따라 배치, width, height, 상하 margin 모두 적용이 가능 */
+                display: inline-block;
+            }
+
+            .box4 {
+                background-color: #eee;
+                width: 100px;
+                height: 100px;
+                /* text-align: center;
+                line-height: 300px; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box5 {
+                background-color: #eee;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-item {
+                background-color: lightcoral;
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            <!-- block 요소: p, div, h1-h6, section, article 등등 -->
+            <!-- 줄바꿈 o, css 박스모델의 개념이 모두 적용 -->
+            <p>블록레벨 요소</p>
+            <p>블록레벨 요소</p>
+            <p>블록레벨 요소</p>
+            <p>블록레벨 요소</p>
+        </div>
+        <div class="box2">
+            <!-- inline 요소: span, a, strong, em, img, input 등등 -->
+            <!-- 텍스트 흐름에 따라 배치, width, hight, 상하 margin 적용되지 않음 -->
+            <span>인라인 레벨 요소</span>
+            <span>인라인 레벨 요소</span>
+            <span>인라인 레벨 요소</span>
+            <span>인라인 레벨 요소</span>
+        </div>
+        <div class="box3">
+            <span>인라인 레벨 요소</span>
+            <span>인라인 레벨 요소</span>
+            <span>인라인 레벨 요소</span>
+            <span>인라인 레벨 요소</span>
+        </div>
+
+        <div class="box4 hidden">
+            <span>hello world</span>
+        </div>
+
+        <div class="box5">
+            <div class="grid-item">item</div>
+            <div class="grid-item">item</div>
+            <div class="grid-item">item</div>
+            <div class="grid-item">item</div>
+        </div>
+    </body>
+</html>

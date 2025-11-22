@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            @font-face {
+                font-family: "Pretendard";
+                src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+                font-weight: 700;
+                font-style: normal;
+            }
+
+            /* 공통 스타일 */
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family: "Pretendard", system-ui;
+            }
+
+            :root {
+                --border-color: #1a202c;
+                --bg-color: #343f50;
+                --default-text: #cbd5df;
+                --default-shadow: rgba(255, 255, 255, 0.1);
+                --hover-shadow: rgba(255, 255, 255, 0.2);
+                --active-shadow: rgba(0, 0, 0, 0.2);
+                --hover-text: #fff;
+                --positive-text: #439aff;
+                --negative-text: #eb5757;
+                --disabled-text: #4a5568;
+            }
+
+            /* 버튼의 공통 스타일 정의 */
+            .btn {
+                width: 88px;
+                height: 32px;
+                border: solid 1px var(--border-color);
+                background-color: var(--bg-color);
+                box-shadow: inset 2px 2px 0px 0px var(--default-shadow);
+
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .btn:hover {
+                text-decoration: underline;
+                box-shadow: inset 2px 2px 0px 0px var(--hover-shadow);
+            }
+
+            .btn:active {
+                text-decoration: underline;
+                box-shadow: inset 2px 2px 0px 0px var(--active-shadow);
+            }
+
+            .normal {
+                color: var(--default-text);
+            }
+
+            .normal:hover,
+            .normal:active {
+                color: var(--hover-text);
+            }
+
+            .positive {
+                color: var(--positive-text);
+            }
+
+            .positive:hover,
+            .positive:active {
+                color: var(--hover-text);
+                border-color: var(--positive-text);
+                background-color: var(--positive-text);
+            }
+
+            .negative {
+                color: var(--negative-text);
+            }
+
+            .negative:hover,
+            .negative:active {
+                color: var(--hover-text);
+                border-color: var(--negative-text);
+                background-color: var(--negative-text);
+            }
+
+            .btn[disabled] {
+                color: var(--disabled-text);
+                box-shadow: initial;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="btn normal">Button</button>
+        <button class="btn normal" disabled>Button</button>
+        <button class="btn positive">Yes</button>
+        <button class="btn negative">Del</button>
+    </body>
+</html>

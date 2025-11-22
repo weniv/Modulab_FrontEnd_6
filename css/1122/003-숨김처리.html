@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .hidden {
+                /* 화면에서 요소가 제거, 레이아웃/접근성 트리에서도 사라짐 -> 스크린 리더에서 읽히지 않음 */
+                /* display: none; */
+                /* 요소가 화면에 보이지 않지만 레이아웃 유지(투명인간) */
+                /* visibility: hidden; */
+
+                /* 1. 텍스트를 화면에서 숨길때 */
+                /* 링크같은 포커스가 가능한 요소에 사용하지 않음 */
+                text-indent: -9999px;
+            }
+
+            /* 2. 컨텐츠를 화면 밖으로 보내는 기능 */
+            .sr-only {
+                position: absolute;
+                left: -9999px;
+                top: auto;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+            }
+
+            .a11y-hidden {
+                clip: rect(1px, 1px, 1px, 1px);
+                clip-path: inset(50%);
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hidden">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat tempora, tenetur assumenda tempore, dolores omnis voluptates rem vero nostrum quod, quam voluptas aliquam dignissimos
+            repellendus earum minus molestias? Dolore, ducimus?
+        </div>
+        <button>
+            <img src="./images/icon-heart-fill.png" alt="" />
+            <!-- IR 기법 -->
+            <span class="sr-only">좋아요</span>
+            <span class="a11y-hidden">좋아요</span>
+        </button>
+    </body>
+</html>

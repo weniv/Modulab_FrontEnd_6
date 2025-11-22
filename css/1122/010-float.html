@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 부모 요소는 float 속성을 가진 자식 요소를 인지하지 못함. */
+            .container {
+                border: 3px dashed orangered;
+
+                /* 1. 높이값 지정 */
+                /* 유연한 레이아웃을 만들 수 없어 권장하지 않음 */
+                /* height: 250px; */
+
+                /* 2. overflow: hidden;, display: flow-root; */
+                /* BFC(독립적인 영역) 발생 */
+                /* overflow: hidden; */
+            }
+
+            /* 3. clearfix 가상요소 */
+            /* 가장 권장하는 방식 */
+            .clearfix::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            h2 {
+                float: right;
+                /* float: left; */
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+                float: left;
+                /* float: right; */
+            }
+
+            p {
+                /* clear: left; */
+                /* clear: right; */
+                /* 더 안정적으로 권장되는 방법 */
+                clear: both;
+
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container clearfix">
+            <img src="./images/weniv-binky.png" alt="" />
+            <h2>Hello world</h2>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium nemo quo delectus eligendi ab necessitatibus saepe, facilis deleniti vero illo repudiandae quibusdam reprehenderit
+                tempore beatae consequatur ipsa? Doloremque, quam aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam perferendis sequi minima praesentium. Sed nesciunt
+                tempore odit iure. Velit aliquam sequi illo dolorum dolore id ut voluptatibus veniam eos delectus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam perferendis sequi
+                minima praesentium. Sed nesciunt tempore odit iure. Velit aliquam sequi illo dolorum dolore id ut voluptatibus veniam eos delectus.
+            </p>
+        </div>
+    </body>
+</html>
