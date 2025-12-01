@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                height: 100vh;
+                background-color: #eee;
+                display: flex;
+
+                /* 한 줄에 배치할 것인지, 여러 줄에 배치할 것인지 */
+                /* 기본값. 모든 아이템을 한 줄에 배치. 아이템의 크기가 줄어들 수 있음 */
+                flex-wrap: nowrap;
+                /* 공간이 부족하면 다음줄로 */
+                flex-wrap: wrap;
+                flex-wrap: wrap-reverse;
+            }
+
+            .item {
+                width: 100px;
+                height: 100px;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .item:nth-child(odd) {
+                background-color: lightcoral;
+            }
+
+            .item:nth-child(even) {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+        </div>
+    </body>
+</html>

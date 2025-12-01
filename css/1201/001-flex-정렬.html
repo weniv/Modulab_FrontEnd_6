@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                height: 100vh;
+                background-color: #eee;
+
+                /* flex 적용 방법. 부모요소에 작성 */
+                display: flex;
+
+                /* 주축의 방향을 설정 */
+                /* 주축: flex-direction이 결정하는 메인 방향, 교차축: 주축에 수직인 방향 */
+                /* 기본값. 왼쪽에서 오른쪽(웹의 기본 읽기 방향) */
+                flex-direction: row;
+                /* 세로. (모바일 UI) */
+                flex-direction: column;
+                /* 오른쪽부터 배치. (아랍어) */
+                flex-direction: row-reverse;
+                /* 아래에서 위로. (채팅 UI) */
+                flex-direction: column-reverse;
+                flex-direction: row;
+
+                /* 주축을 기준으로 하는 정렬 */
+                /* 시작점에 정렬 */
+                justify-content: flex-start;
+                /* 끝점에 정렬 */
+                justify-content: flex-end;
+                /* 가운데 정렬 */
+                justify-content: center;
+                /* 양 끝은 딱 붙이고, 아이템 사이사이만 균등하게 배치 */
+                justify-content: space-between;
+                /* 모든 아이템 주변에 똑같은 여백 */
+                justify-content: space-around;
+                /* 모든 간격이 동일 */
+                justify-content: space-evenly;
+                justify-content: flex-start;
+
+                /* 교차축 기준 정렬 */
+                /* 기본값. 교차축을 채우기 위해 아이템을 늘림(교차축 기준 아이템의 크기가 지정되어있지 않은 경우) */
+                align-items: stretch;
+                /* 시작점에 정렬 */
+                align-items: flex-start;
+                /* 끝점에 정렬 */
+                align-items: flex-end;
+                /* 가운데 정렬 */
+                align-items: center;
+            }
+
+            .item {
+                width: 100px;
+                height: 100px;
+                font-size: 32px;
+                /* text-align: center;
+                line-height: 100px; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .item:nth-child(odd) {
+                background-color: lightcoral;
+            }
+
+            .item:nth-child(even) {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <!-- <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div> -->
+        </div>
+    </body>
+</html>
