@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                height: 100vh;
+                background-color: #eee;
+                /* grid 레이아웃 사용 */
+                display: grid;
+
+                /* 열방향 그리드 트랙 사이즈 설정 */
+                /* 몇개의 열을 만들 것인가? 각 열의 너비는? */
+                grid-template-columns: 100px 200px 300px;
+                grid-template-columns: 10% 20% 30%;
+                /* fr -> fraction(분수)의 약자 1 : 2 : 3의 비율로 너비가 설정 */
+                grid-template-columns: 1fr 2fr 3fr;
+            }
+
+            .item {
+                background-color: lightgreen;
+                border: solid 1px black;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+        </div>
+    </body>
+</html>

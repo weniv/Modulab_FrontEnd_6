@@ -8,6 +8,32 @@
             .main {
                 background-color: #000;
                 font-size: 32px;
+                /* padding: 10px; */
+                border: solid 10px black;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header,
+            footer {
+                /* height: 100px; */
+                flex-basis: 100px;
+            }
+
+            .container {
+                flex-basis: 500px;
+                display: flex;
+                gap: 10px;
+            }
+
+            aside {
+                flex-basis: 200px;
+                flex-grow: 0;
+            }
+
+            section {
+                flex-grow: 1;
             }
 
             header,
@@ -15,10 +41,17 @@
             aside,
             footer {
                 background-color: lemonchiffon;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         </style>
     </head>
     <body>
+        <!-- 1. flex 1차원 레이아웃 지정할 수 있지
+        2. 그럼 main 안에서 어떤 요소들을 정렬을 할 수 있을까? header, container, footer
+        3. header, container, footer는 주축의 방향이 어딜까? -> column
+        4. container안의 section, aside는 어떤 방향으로 정렬이 되어야할까? -> row -->
         <div class="main">
             <header>header</header>
             <div class="container">
