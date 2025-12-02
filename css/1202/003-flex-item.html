@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                height: 100vh;
+                background-color: #eee;
+                display: flex;
+            }
+
+            .item {
+                /* width: 100px; */
+                height: 100px;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .item:nth-child(odd) {
+                background-color: lightcoral;
+            }
+
+            .item:nth-child(even) {
+                background-color: lightgreen;
+            }
+
+            /* 여유 공간만 분배 */
+            .item {
+                flex-basis: auto; /* 내용 크기 유지 */
+                flex-grow: 1;
+            }
+
+            /* 전체 공간을 분배 */
+            .item {
+                flex-basis: 0;
+                flex-grow: 1;
+            }
+
+            /* 실무 활용 팁 */
+            .sidebar {
+                /* 고정된 크기 지정 */
+                flex-grow: 0;
+                flex-basis: 200px;
+            }
+
+            .main {
+                /* 나머지 공간 할당 */
+                flex-grow: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">hello world hello world</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+    </body>
+</html>

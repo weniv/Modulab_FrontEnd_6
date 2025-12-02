@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                display: flex;
+                background-color: #eee;
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .item {
+                background-color: cornflowerblue;
+                margin: 5px;
+                padding: 10px;
+
+                /* 컨테이너 내에 남은 공간을 item들이 모두 차지 */
+                flex: 1;
+                /* 위 코드는 아래와 같습니다. */
+                flex-grow: 1; /* 남은 공간을 1의 비율로 나눠가짐 */
+                flex-shrink: 1; /* 공간이 부족하면 1의 비율로 줄어듬 */
+                flex-basis: 0; /* 기본 크기 0 */
+            }
+
+            .width-min {
+                min-width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item width-min">아주아주아주아주아주아주긴텍스트입니다아주아주아주아주아주아주긴텍스트입니다</div>
+            <div class="item">item 2</div>
+            <div class="item">item 3</div>
+        </div>
+    </body>
+</html>
