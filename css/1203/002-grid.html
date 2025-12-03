@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .item {
+                background-color: lightgreen;
+                border: solid 1px black;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                width: 100px;
+                height: 100px;
+            }
+
+            .container {
+                height: 100vh;
+                background-color: #eee;
+                /* grid 레이아웃 사용 */
+                display: grid;
+
+                /* 자동으로 트랙 생성 */
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                /* 빈 컬럼의 트랙을 유지 */
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+                gap: 10px;
+                /* 행간 열간 */
+                /* gap: 10px 20px; */
+
+                /* 정렬 */
+                grid-template-columns: repeat(3, 200px);
+                grid-template-rows: repeat(3, 200px);
+
+                /* 1. 그리드 전체 정렬 */
+                /* 그리드가 컨테이너보다 작을 때 가능 = 여유공간이 있을 때 */
+                /* 수평 정렬 */
+                justify-content: start;
+                justify-content: end;
+                justify-content: center;
+                justify-content: space-between;
+                justify-content: space-around;
+                justify-content: space-evenly;
+
+                /* 수직 정렬 */
+                align-content: start;
+                align-content: end;
+                align-content: center;
+                align-content: space-between;
+                align-content: space-around;
+                align-content: space-evenly;
+
+                /* 2. 셀 내에서 아이템 정렬 */
+                /* 수평 정렬 */
+                justify-items: start;
+                justify-items: end;
+                justify-items: center;
+                /* 수직정렬 */
+                align-items: start;
+                align-items: end;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+        </div>
+    </body>
+</html>

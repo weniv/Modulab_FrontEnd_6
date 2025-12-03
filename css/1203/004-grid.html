@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .item {
+                background-color: #ddd;
+                border: 1px solid black;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: minmax(100px, auto);
+            }
+
+            .item:nth-child(2) {
+                background-color: lawngreen;
+
+                /* 1. 개별 속성 */
+                grid-row-start: 1; /* 시작 행 라인 */
+                grid-row-end: 3; /* 끝 행 라인 */
+                grid-column-start: 2; /* 시작 열 라인 */
+                grid-column-end: 4; /* 끝 열 라인 */
+
+                /* 2. 축 별 단축 */
+                grid-row: 1 / 3; /* start / end */
+                grid-column: 2 / 4;
+
+                /* 3. 완전 단축 */
+                /* row-start / col-start / row-end / col-end */
+                grid-area: 1 / 2 / 3 / 4;
+
+                /* 4. span 사용 */
+                grid-area: 1 / 2 / span 2 / span 2;
+                z-index: 10;
+            }
+
+            .item:nth-child(6) {
+                background-color: lightcoral;
+                grid-area: 1 / 1 / 4 / 3;
+                opacity: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+        </div>
+    </body>
+</html>
