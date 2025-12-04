@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box {
+                width: 200px;
+                height: 200px;
+                margin: 100px auto;
+                background-color: #eee;
+
+                /* 전환효과를 적용할 속성 */
+                transition-property: background-color, color;
+                /* 모든 속성 */
+                transition-property: all;
+
+                /* 전환효과가 완료되는 시간 */
+                transition-duration: 3s;
+                /* transition-duration: 0.5s; */
+
+                /* 전환효과의 타이밍 함수 */
+                transition-timing-function: linear;
+                transition-timing-function: ease-in;
+                transition-timing-function: ease-out;
+                transition-timing-function: cubic-bezier(0, 0.57, 0.13, -0.46);
+                transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                transition-timing-function: steps(4);
+                transition-timing-function: steps(4, start);
+
+                /* 전환효과 지연 */
+                /* 2초 기다렸다가 시작 */
+                transition-delay: 2s;
+                /* 이미 2초가 진행된 상태로 시작 */
+                transition-delay: -2s;
+
+                transition: none;
+                transition: color 2s ease-in, transform 5s linear, background-color 10s steps(4);
+            }
+
+            .box:hover {
+                background-color: lightcoral;
+                color: blue;
+                transform: translateX(100%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h2>hello world</h2>
+        </div>
+    </body>
+</html>

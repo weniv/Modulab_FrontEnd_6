@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 해당 속성이 있는지 */
+            [title] {
+                color: red;
+            }
+
+            [class] {
+                font-weight: bold;
+            }
+
+            /* = 해당 속성에 해당 속성값이 있는지 */
+            [title="hello"] {
+                border: solid 1px blue;
+            }
+            [title="hello world"] {
+                border: solid 1px red;
+            }
+
+            /* ~= 공백으로 구분되어 있는 값 중에 일치하는 값이 있는지 */
+            [class~="btn"] {
+                background-color: lightcoral;
+            }
+
+            /* |= 특정값이거나 "특정값-"으로 시작하는지 */
+            [class|="btn"] {
+                padding: 10px;
+            }
+
+            /* 시작 ^=, 끝 $= */
+            [class^="btn"] {
+                color: lightgreen;
+            }
+            [class$="btn"] {
+                color: lightseagreen;
+            }
+
+            [class*="btn"] {
+                text-decoration: underline;
+            }
+            [class*="warning"] {
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <p title="hello">Hello world</p>
+        <p title="hello world">Hello world</p>
+        <p class="text">Hello world</p>
+
+        <button class="btn-primary">1. Primary btn</button>
+        <button class="secondary-btn">2. Secondary btn</button>
+        <button class="btn warning">3. Warning btn</button>
+        <button class="btn-red">4. Error btn</button>
+        <button class="btn">5. Button</button>
+    </body>
+</html>

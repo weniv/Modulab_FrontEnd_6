@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                margin-top: 100px;
+            }
+
+            .item {
+                width: 150px;
+                height: 150px;
+                background-color: #eee;
+
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .item:nth-child(1):hover {
+                background-color: lavender;
+                /* 현재 위치에서 지정된 거리만큼 이동 */
+                transform: translate(50px, 50px);
+                transform: translate(-50px, -50px);
+                transform: translate(0, 50px);
+                /* % 자기자신의 크기를 기준 */
+                transform: translate(0, 50%);
+                transform: translateX(100px);
+                transform: translateY(100px);
+                transform: translateX(100px) translateY(100px);
+            }
+
+            .item:nth-child(2):hover {
+                background-color: gold;
+                /* 요소의 크기 조절 */
+                /* 기본 크기 1, 1보다 큰 값 > 확대, 1보다 작은 값 > 축소 */
+                transform: scale(2);
+                transform: scale(0.5);
+                transform: scale(1, 2);
+                transform: scaleX(2);
+                transform: scaleY(2);
+                /* 완전히 사라짐 */
+                transform: scale(0);
+                /* 음수 > 거울상 + 크기조절 */
+                transform: scale(-2, 1);
+
+                transform: scaleX(2);
+                transform-origin: 0% 50%;
+                transform-origin: 0px 75px;
+            }
+
+            .item:nth-child(3):hover {
+                /* 요소의 회전 */
+                background-color: yellowgreen;
+                /* 양수 > 시계방향, 음수 > 반시계방향 */
+                transform: rotate(45deg);
+                /* transform: rotate(-45deg); */
+                /* 시계 방향으로 반바퀴 회전 */
+                /* transform: rotate(0.5turn); */
+
+                transform-origin: top left;
+            }
+
+            .item:nth-child(4):hover {
+                /* 기울기 */
+                /* 텍스트도 같이 기울여지므로 가독성 주의 */
+                background-color: lightpink;
+                transform: skew(30deg);
+                transform: skew(30deg, 20deg);
+                /* 좌우 */
+                transform: skewX(30deg);
+                /* 상하 */
+                transform: skewY(20deg);
+            }
+
+            /* 실무 활용 팁: position + translate를 활용한 정중앙 정렬 */
+            .absolute {
+                width: 300px;
+                height: 300px;
+                background-color: #eee;
+                margin: 20px auto;
+                position: relative;
+            }
+
+            .child {
+                width: 100px;
+                height: 100px;
+                background-color: lightcoral;
+                position: absolute;
+
+                /* 부모 요소 크기 기준으로 %를 배치 */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">이동</div>
+            <div class="item">크기조절</div>
+            <div class="item">회전</div>
+            <div class="item">기울이기</div>
+            <div class="item">전체</div>
+        </div>
+
+        <div class="absolute">
+            <div class="child"></div>
+        </div>
+    </body>
+</html>
