@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .clock {
+                background-color: black;
+                width: 300px;
+                height: 300px;
+                margin: 50px auto;
+                border-radius: 30px;
+                position: relative;
+            }
+
+            .hour {
+                width: 10px;
+                height: 50px;
+                background-color: lightcoral;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                animation: time 200s steps(60) infinite;
+                transform-origin: center bottom;
+            }
+
+            .min {
+                width: 10px;
+                height: 120px;
+                background-color: lightskyblue;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                animation: time 36s steps(60) infinite;
+                transform-origin: center bottom;
+            }
+
+            .sec {
+                width: 10px;
+                height: 140px;
+                background-color: lightseagreen;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                animation: time 6s steps(60) infinite;
+                transform-origin: center bottom;
+            }
+
+            @keyframes time {
+                0% {
+                    transform: translate(-50%, -100%) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, -100%) rotate(360deg);
+                }
+            }
+
+            .building {
+                width: 113px;
+                height: 176px;
+                margin: 50px auto;
+                background: url("./images/building.png") no-repeat top left / auto 100%;
+                animation: building-up 5s steps(33) infinite;
+            }
+
+            @keyframes building-up {
+                0% {
+                    background-position: top left;
+                }
+
+                100% {
+                    background-position: top right;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 실습1. 시계 시침, 분침, 초침 만들기 -->
+        <div class="clock">
+            <div class="hour"></div>
+            <div class="min"></div>
+            <div class="sec"></div>
+        </div>
+
+        <!-- 실습2. 쌓아올라가는 빌딩 만들기 -->
+        <!-- 34개의 프레인을 가진 빌딩이미지 -->
+        <div class="building"></div>
+    </body>
+</html>

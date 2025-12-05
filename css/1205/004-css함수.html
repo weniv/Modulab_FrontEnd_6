@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .container {
+                background-color: lightblue;
+
+                width: 400px;
+
+                /* 컨테이너 크기에 따라 유동적인 크기 */
+                /* calc() px, %, em, rem 등등의 단위를 자유롭게 조합하여 값을 계산 */
+                width: calc(100% - 32px);
+                margin: auto;
+
+                /* 여러 옵션중 최소값, 최대값을 선택 */
+                width: min(50%, 600px);
+                width: max(50%, 600px);
+                /* 반응형 컨테이너 */
+                width: min(1200px, 100%);
+
+                /* 최소값, 선호값, 최대값 */
+                /* 선호값이 최소값보다 작아진다면 > 최소값이 적용 */
+                /* 선호값이 최대값보다 커진다면 > 최대값이 적용 */
+                /* 선호값이 범위 내에 있다면 선호값이 적용 */
+                width: clamp(300px, 50%, 800px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <span
+                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis eos suscipit cupiditate, beatae rerum deserunt alias aliquam, culpa accusantium ex facere animi dolore nihil
+                error fugiat repellat sequi voluptas ullam!</span
+            >
+        </div>
+
+        <!-- 각 li가 한줄에 위치(3개의 열)하도록. 최소너비를 200px 유지 -->
+        <ul class="lang-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+    </body>
+</html>
