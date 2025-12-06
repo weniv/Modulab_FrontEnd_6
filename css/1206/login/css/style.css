@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "SpoqaHanSansNeo-Regular";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "SpoqaHanSansNeo-Regular", sans-serif;
+    background-color: #eee;
+    padding: 50px;
+}
+
+section {
+    width: 350px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 19px 16px 18px;
+    font-size: 12px;
+}
+
+h2 {
+    margin-bottom: 16px;
+}
+
+.btn-login {
+    padding: 11px 0;
+    border-radius: 4px;
+    background: #711bff;
+    color: #fff;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+.btn-login span {
+    /* 부모 요소가 display: flex 또는 display: grid인 경우 vertical-align이 작동하지 않음 */
+    margin-top: 3px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    color: #767676;
+}
+
+.btn-group a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

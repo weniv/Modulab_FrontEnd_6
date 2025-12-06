@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            @keyframes rotate {
+                0% {
+                    transform: rotateY(0);
+                }
+                100% {
+                    transform: rotateY(360deg);
+                }
+            }
+
+            /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                box-sizing: border-box;
+            }
+
+            /* 화면 중앙 배치 + 3D 원근감 설정 */
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                perspective: 1000px; /* 3D 효과를 위한 원근감 */
+            }
+
+            .container {
+                width: 200px;
+                height: 200px;
+                position: relative;
+                transform-style: preserve-3d; /* 자식 요소들을 3D 공간에 배치 */
+                animation: rotate 10s linear infinite;
+            }
+
+            /* 각 카드 기본 설정 */
+            .container li {
+                position: absolute;
+                /* 컨테이너와 같은 크기로 설정 */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d; /* 가상 요소도 3D 공간에 배치 */
+                backface-visibility: hidden; /* 요소의 뒷면 숨김 */
+            }
+
+            /* 카드 뒷면 */
+            .container li::after {
+                content: "";
+                position: absolute;
+                background-color: hotpink;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: rotateY(180deg); /* 180도 회전하여 뒷면 배치 */
+                backface-visibility: hidden; /* 요소의 뒷면 숨김 */
+            }
+
+            /* 이미지 꽉차게 크기 조정 */
+            .container li img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* 원의 둘레 = 200px * 6 */
+            /* 원의 반지름 = 원주(원의 둘레) / 파이(3.14) / 2 */
+            /* 이미지가 총 6개 -> 360도 / 6 = 60도 */
+            .container {
+                /* 100px의 여유공간을 추가한 값 */
+                /* 공식: (카드 너비 × 카드 개수) ÷ (2 × π) + 여유 공간 */
+                --carousel-radius: calc(200px * 6 / 2 / 3.14 + 100px);
+            }
+
+            /* 각 카드를 원형으로 배치 (360도 ÷ 6 = 60도씩 회전) */
+            .container li:nth-child(1) {
+                transform: rotateY(calc(360deg / 6 * 0)) translateZ(var(--carousel-radius)); /* 0도 회전 후 Z축으로 이동 */
+            }
+            .container li:nth-child(2) {
+                transform: rotateY(calc(360deg / 6 * 1)) translateZ(var(--carousel-radius)); /* 60도 회전 후 Z축으로 이동 */
+            }
+            .container li:nth-child(3) {
+                transform: rotateY(calc(360deg / 6 * 2)) translateZ(var(--carousel-radius)); /* 120도 회전 후 Z축으로 이동 */
+            }
+            .container li:nth-child(4) {
+                transform: rotateY(calc(360deg / 6 * 3)) translateZ(var(--carousel-radius)); /* 180도 회전 후 Z축으로 이동 */
+            }
+            .container li:nth-child(5) {
+                transform: rotateY(calc(360deg / 6 * 4)) translateZ(var(--carousel-radius)); /* 240도 회전 후 Z축으로 이동 */
+            }
+            .container li:nth-child(6) {
+                transform: rotateY(calc(360deg / 6 * 5)) translateZ(var(--carousel-radius)); /* 300도 회전 후 Z축으로 이동 */
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="container">
+            <li><img src="./images/weniv-binky.png" alt="" /></li>
+            <li><img src="./images/weniv-chilli.png" alt="" /></li>
+            <li><img src="./images/weniv-garry.png" alt="" /></li>
+            <li><img src="./images/weniv-licat.png" alt="" /></li>
+            <li><img src="./images/weniv-suri.png" alt="" /></li>
+            <li><img src="./images/weniv-wade.png" alt="" /></li>
+        </ul>
+    </body>
+</html>

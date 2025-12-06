@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 위에서부터 확인하면서 조건에 맞는 이미지를 선택 -->
+        <picture>
+            <source media="(min-width:900px)" srcset="./images/lication-chilli.png" />
+            <source media="(max-width:899px)" srcset="./images/lication-chilli2.png" />
+            <img src="./images/lication-chilli2.png" alt="위니브와 함께하는 리케이션" />
+        </picture>
+
+        <!-- 최신 포맷일수록 용량이 작고 품질은 동일 -->
+
+        <picture>
+            <source srcset="./images/weniv-licat.webp" type="image/webp" />
+            <source srcset="./images/weniv-licat.avif" type="image/avif" />
+            <img src="./images/weniv-licat.png" alt="위니브 라이캣" />
+        </picture>
+    </body>
+</html>

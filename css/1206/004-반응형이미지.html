@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            img {
+                /* sizes, width 모두 작성하면 width값을 우선적으로 적용 */
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 디바이스 환경에 따른 적절한 이미지를 "브라우저"가 선택 -->
+        <!-- 브라우저는 네트워크, 메모리, 성능, 시간 등을 고려해서 적절한 최적의 이미지 선택 -->
+        <!-- w 서술자: 반응형 웹사이트, 이미지 크기가 화면(디바이스, 환경)에 변함
+         x 서술자: 고정된 크기 이미지, 픽셀 밀도에만 대응 -->
+        <!-- sizes 속성은 작성 순서가 중요.  -->
+        <img
+            src="./images/chilli_360px.jpg"
+            srcset="./images/chilli_360px.jpg 360w, ./images/chilli_720px.jpg 720w, ./images/chilli_1440px.jpg 1440w"
+            sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, 900px"
+            alt="위니브 칠리 캐릭터"
+        />
+
+        <!-- 각각의 디바이스의 화소밀도에 대응한 이미지를 보여줌 -->
+        <img src="./images/chilli_360px.jpg" srcset="./images/chilli_360px.jpg 1x, ./images/chilli_720px.jpg 2x, ./images/chilli_1440px.jpg 3x" alt="위니브 칠리 캐릭터" />
+    </body>
+</html>

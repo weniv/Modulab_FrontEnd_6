@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 세로 방향인 경우에는 세로 배치, 가로 방향인 경우에는 가로로 배치 */
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                @media screen and (orientation: landscape) {
+                    flex-direction: row;
+                }
+            }
+
+            @media print {
+                header,
+                footer {
+                    display: none;
+                }
+            }
+
+            header {
+                background-color: lightblue;
+            }
+            main {
+                background-color: lightcoral;
+            }
+            footer {
+                background-color: lavender;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>header</header>
+            <main>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto fuga perspiciatis non tenetur. Consequuntur dolorem praesentium voluptate repudiandae vitae, ducimus, dolore maiores
+                repellendus autem modi impedit placeat sapiente eos pariatur? Repellat numquam error, at aliquid aut doloremque, temporibus veniam nostrum voluptatem libero obcaecati fugit nisi eos
+                rem. Culpa blanditiis atque soluta eveniet nobis temporibus, optio explicabo voluptas distinctio voluptatum perspiciatis.
+            </main>
+            <footer>footer</footer>
+        </div>
+    </body>
+</html>

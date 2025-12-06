@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 100px;
+            }
+
+            .item {
+                width: 100px;
+                height: 100px;
+                background-color: rgba(0, 0, 255, 0.5);
+                border: 1px solid black;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: transform 2s;
+            }
+
+            .item:nth-child(1):hover {
+                /* z축 거리만큼 이동 */
+                transform: perspective(300px) translateZ(100px);
+
+                transform: perspective(300px) translate3d(100px, 100px, -100px);
+            }
+
+            .item:nth-child(2):hover {
+                transform: perspective(500px) rotateZ(45deg);
+
+                /* x, y, z에 대한 백터(0~1) */
+                /* 네번째 인자인 각도를 비율에 따라 회전 */
+                transform: perspective(500px) rotate3d(0, 1, 1, 120deg);
+            }
+
+            .item:nth-child(3):hover {
+                /* scaleZ 두께를 만드는 속성 x, z축으로 일어나는 변형에 대한 비율을 지정하는 속성. 팝업북 */
+                /* scaleZ만 단독으로 사용 > 시각적인 변화 x */
+                transform: perspective(300px) scaleZ(3);
+                transform: perspective(300px) scaleZ(3) rotateX(45deg);
+                transform: perspective(300px) rotateX(45deg);
+                transform: perspective(300px) scaleZ(6) rotateX(45deg);
+            }
+
+            .item:nth-child(4):hover {
+                transform: perspective(300px) translate3d(-100px, 50px, 200px) rotate3d(0.5, 1, 0, 45deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">translate</div>
+            <div class="item">rotate</div>
+            <div class="item">scale</div>
+            <div class="item">all</div>
+        </div>
+    </body>
+</html>
