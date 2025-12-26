@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    javascript Test
+    <script>
+        const time = new Date();
+
+        const year = time.getFullYear();
+        // console.log(typeof time.getMonth());
+        const month = String(time.getMonth() + 1).padStart(2, '0');
+        const day = String(time.getDate()).padStart(2, '0');
+
+        const hours = String(time.getHours()).padStart(2, '0');
+        const minutes = String(time.getMinutes()).padStart(2, '0');
+        const seconds = String(time.getSeconds()).padStart(2, '0');
+
+        // console.log(`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`);
+
+
+
+
+        // const numbers = [1, 2, 3, 4, 5];
+
+        // const result = numbers.map(
+        //     function (num) {
+        //         return num + '입니다.';
+        //     }
+        // );
+
+        // console.log(result);
+
+
+        const numbers = [1, 2, 3, 4, 5];
+
+        const sum = numbers.reduce(
+            (acc, cur) => {
+                // console.log(`acc: ${acc}, cur: ${cur}`);
+                return acc + cur;
+            }, 0
+        );
+
+
+        // console.log(sum);
+
+
+        const products = [
+            { name: "노트북", price: 1000000 },
+            { name: "키보드", price: 50000 },
+            { name: "마우스", price: 30000 }
+        ];
+
+        const discountedProducts = products.map(
+            (product) => {
+                return {
+                    name: product.name,
+                    price: product.price * 0.9
+                }
+            });
+
+        console.log(discountedProducts);
+
+
+
+        const cart = [
+            { name: "사과", price: 3000, quantity: 3 },
+            { name: "바나나", price: 2000, quantity: 2 },
+            { name: "오렌지", price: 4000, quantity: 1 }
+        ];
+
+        totalPrice = cart.reduce((acc, cur) => {
+            console.log(acc + cur.price * cur.quantity);
+            return acc + (cur.price * cur.quantity)
+        }, 0);
+
+        console.log(totalPrice);
+    </script>
+</body>
+
+</html>
