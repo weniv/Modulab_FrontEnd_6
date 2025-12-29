@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 300vh;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // rest 문법은 가장 마지막에 사용해야만 합니다.
+        // const { ...others, name, company } = { name: '라이캣', company: '위니브', age: 20, grade: 3 };
+        // console.log(others);
+
+        // const [a, b, ...numbers] = [1, 2, 3, 4, 5];
+        // console.log(numbers);
+
+        // const sayGoodbye = function greeting(name) {
+        //     console.log(`안녕히 가세요, ${name}님!`);
+        //     console.log(greeting);
+        // };
+        // sayGoodbye('빙키');
+        // console.log(greeting);
+
+
+        // console.log(더하기(10, 20)); // 30
+
+        // function 더하기(x, y) {
+        //     return x + y;
+        // }
+
+        // 더하기();
+
+
+
+        // const 더하기 = (x, y) => x + y;
+
+        // const 더하기 = function (x, y) {
+        //     return x + y;
+        // }
+
+        // const x = 10; // 전역 변수
+
+        // function outer() {
+        //     const y = 20; // outer 함수의 지역 변수
+        //     console.log(z);
+
+        //     function inner() {
+        //         const z = 30; // inner 함수의 지역 변수
+        //         console.log(x, y, z);
+        //     }
+
+        //     inner();
+        // }
+        // outer();
+
+
+        // function outer() {
+        //     const outerVar = 'outer variable';
+
+        //     function inner() {
+        //         console.log(outerVar);
+        //     }
+
+        //     return inner;
+        // }
+
+        // const innerFunc = outer();
+        // innerFunc(); // outer variable
+        // // console.log(outerVar);
+
+
+        // function createCounter() {
+        //     let count = 0;
+
+        //     return function () {
+        //         count++;
+        //         console.log(count);
+        //     };
+        // }
+
+        // const counter = createCounter();
+        // counter(); // 1
+        // counter(); // 2
+        // counter(); // 3
+
+        // count++;
+
+
+        // 스크롤이벤트
+
+        window.addEventListener('scroll', () => {
+            console.log('scrolling...');
+        });
+    </script>
+
+</body>
+
+</html>

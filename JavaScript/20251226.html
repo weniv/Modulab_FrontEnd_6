@@ -10,6 +10,12 @@
 <body>
     javascript Test
     <script>
+
+        const fileName = 'image.png';
+
+        const splited = fileName.split('.'); // ['image', 'png'];
+        console.log(splited[splited.length - 1]);
+
         const time = new Date();
 
         const year = time.getFullYear();
