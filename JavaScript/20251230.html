@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change exam</title>
+
+</head>
+
+<body>
+    <input type="text" id="inp-text" />
+    <button type="button" class="submit-btn">요소 추가하기</button>
+
+    <ul id="result">
+        <li class="target">📌 기준 아이템</li>
+    </ul>
+
+    <script>
+        const result = document.getElementById('result');
+        const inpText = document.getElementById('inp-text');
+        const submitBtn = document.querySelector('.submit-btn');
+        const targetNode = result.querySelector('li.target');
+
+        submitBtn.addEventListener('click', () => {
+            const li = document.createElement('li');
+            li.textContent = inpText.value;
+            result.insertBefore(li, targetNode);
+        });
+    </script>
+</body>
+
+</html>
