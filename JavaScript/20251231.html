@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="parent">
+        <!-- 주석입니다. -->
+        텍스트입니다.
+        <div class="child">Hello</div>
+        <div class="child">World</div>
+    </div>
+
+
+    <script>
+        const parentElement = document.querySelector('.parent');
+        const childNodes = parentElement.childNodes;
+        console.log(childNodes); // NodeList(7) [#text, #comment, #text, div.child, #text, div.child, #text]
+    </script>
+</body>
+
+</html>
