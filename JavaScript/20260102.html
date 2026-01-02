@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Sun(year) {
+            this.year = year;
+        }
+
+        Sun.prototype.새해맞이 = function (person) {
+            this.year += 1;
+            console.log("새해가 밝았습니다! 현재 연도:", this.year);
+            person.age += 1;
+            console.log("한 살 더 먹었습니다. 현재 나이:", person.age);
+        };
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        let sun = new Sun(2025);
+        let me = new Person("김유진", 25);
+
+        sun.새해맞이(me);
+
+
+        function FoodPicker(foodNames) {
+            this.menu = foodNames;
+            // this.sayMenu = () => {
+
+            //     const randomNum = Math.floor(Math.random() * foodNames.length);  // 0~1 사이의 램덤한 수를 반환 ==> 0 ~ 0.9999999.... ==> 0 ~ 4.9999999.... ==> 0 ~ 4
+
+            //     console.log(`오늘의 메뉴는 ${this.menu[randomNum]} 입니다!`);
+            // }
+
+            FoodPicker.prototype.sayMenu = function () {
+                const randomNum = Math.floor(Math.random() * this.menu.length);  // 0~1 사이의 램덤한 수를 반환 ==> 0 ~ 0.9999999.... ==> 0 ~ 4.9999999.... ==> 0 ~ 4
+
+                console.log(`오늘의 메뉴는 ${this.menu[randomNum]} 입니다!`);
+            };
+        }
+
+
+
+        const menuBot = new FoodPicker(['된장국', '청국장', '짜장면', '라면', '고등어구이']);
+
+        const menuBot2 = new FoodPicker(['스파게티', '스테이크', '짜장면', '라면', '고등어구이']);
+
+    </script>
+</body>
+
+</html>

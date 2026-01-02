@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const result = new Parent();
+
+
+        function Parent() {
+            this.name = '라이캣';
+        }
+
+
+        Parent.prototype.rename = function (name) {
+            this.name = name;
+        };
+        Parent.prototype.sayName = function () {
+            console.log(this.name);
+        };
+
+        function Child() {
+            Parent.call(this);
+        }
+
+        Child.prototype = Object.create(Parent.prototype); // 지정된 프로토타입 객체를 갖는 새 객체를 만듭니다.
+
+        Child.prototype.canWalk = function () {
+            console.log('now i can walk!!');
+        };
+
+
+        class Robot {
+            // 클래스의 생성자 함수입니다. 하나의 클래스는 하나의 생성자만 정의할 수 있습니다.
+            // 그리고 생성자 함수는 new 키워드가 호출될 때 자동으로 실행됩니다.
+            constructor(name, pw) {
+                this.name = name;
+                this.password = pw;
+            }
+
+            // 메소드를 정의합니다. 메소드는 클래스가 생성한 인스턴스를 통해 사용할 수 있습니다.
+            sayYourName() {
+                console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+            }
+        }
+
+        const robot = new Robot('wade', '123');
+
+
+        class BabyRobot extends Robot {
+            constructor(name) {
+                super(name);
+                this.ownName = '위니브';
+            }
+
+            sayBabyName() {
+                // 또한 상속을 받게되면 부모 클래스의 메소드를 사용할 수 있게 됩니다. 때문에 this로 접근 할 수 있습니다.
+                this.sayYourName();
+                console.log('Suceeding you, Father!');
+            }
+        }
+
+        const baby = new BabyRobot();
+
+
+        class Sausage {
+            constructor(el1, el2) {
+                this.inside1 = el1;
+                this.inside2 = el2;
+            }
+
+            taste() {
+                console.log(`이 소세지는! ${this.inside1}맛과 ${this.inside2} 맛이 납니다!!!`)
+            }
+        }
+
+        class FireSausage extends Sausage {
+            taste(obj1) {
+                console.log(`이 소세지는! ${this.inside1}맛과 ${this.inside2} 맛이 나면서 불맛도 있어요!`);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
