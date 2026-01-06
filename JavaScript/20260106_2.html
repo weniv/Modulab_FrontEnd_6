@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+</head>
+
+<body>
+    <article class="parent">
+        <figure>
+            <img class="figImg" src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*FvUDSeJMpEJ_Lihbtuu-aw.png"
+                alt="" />
+            <figcaption class="figCap">개리는 아무 생각이 없습니다.</figcaption>
+        </figure>
+    </article>
+</body>
+<script>
+    const article = document.querySelector('.parent');
+    const figImg = article.querySelector('.figImg');
+    const figCap = article.querySelector('.figCap');
+    let tf = true;
+    // 형태-의미-상태
+
+    const change = function () {
+        if (tf) {
+            figImg.setAttribute('src', 'https://miro.medium.com/v2/resize:fit:720/format:webp/1*nZaiJiMSPGsLGp9oiUoWsA.png');
+            figCap.textContent = '개리는 무엇을 먹을지 고민합니다.';
+            tf = false;
+        } else {
+            figImg.setAttribute('src', 'https://miro.medium.com/v2/resize:fit:640/format:webp/1*FvUDSeJMpEJ_Lihbtuu-aw.png');
+            figCap.textContent = '개리는 아무 생각이 없습니다.';
+            tf = true;
+        }
+    }
+
+    figImg.addEventListener('click', change);
+</script>
+
+</html>

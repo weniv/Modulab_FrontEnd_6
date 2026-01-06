@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        let me = { age: 30 };
+        let you = me;
+
+        me = null;
+        you = null;
+
+
+        let x = {
+            y: {
+                z: 1
+            }
+        }
+
+        // x 가 참조하는 객체: object1
+        // y 가 참조하는 객체: object2
+
+        let a = x; // object1 참조카운트: 2 (x, a)
+        x = 1;     // object1 참조카운트: 1 (a)
+
+        let b = a.y; // object2 참조카운트: 2 (a.y, b)
+        a = 2;      // object1 참조카운트: 0, object2 참조카운트: 1
+
+
+
+        const weniv = ['라이캣', '빙키', '개리', '뮤라'];
+        const newWeniv = [];
+        weniv.forEach((item, index) => {
+            newWeniv[index] = item + '💖';
+        });
+
+        const newWeniv2 = weniv.map((item, index) => {
+            return item + '💖';
+        });
+
+        // var, let, const
+
+        str = 'hello world'; // 전역변수로 취급
+
+        const obj = Object.freeze({ name: 'weniv' });
+        obj.name = 'licat';
+
+        const man = {
+            name: 'hello',
+            laseName: 'world'
+        };
+
+        delete man.name;
+
+        delete Object.prototype
+
+        function sum(a, a, c) {
+            return a + a + c;
+        }
+    </script>
+</body>
+
+</html>

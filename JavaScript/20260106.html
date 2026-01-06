@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이동실습</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // const box = document.querySelector(".box");
+        // let posX = 0;
+        // let posY = 0;
+
+        // function moveBox(event) {
+        //     switch (event.key) {
+        //         case "ArrowUp":
+        //             posY -= 10;
+        //             break;
+        //         case "ArrowDown":
+        //             posY += 10;
+        //             break;
+        //         case "ArrowLeft":
+        //             posX -= 10;
+        //             break;
+        //         case "ArrowRight":
+        //             posX += 10;
+        //             break;
+        //     }
+        //     box.style.transform = `translate(${posX}px, ${posY}px)`;
+        // }
+
+        // window.addEventListener("keydown", moveBox);
+
+        // while (true) {
+        //     console.log('playing..');
+        // }
+
+        const box = document.querySelector(".box");
+        let key = '';
+        let posX = 0;
+
+        function move(event) {
+            key = event.key
+        }
+
+        function stop(event) {
+            key = '';
+        }
+
+        window.addEventListener("keydown", move);
+        window.addEventListener("keyup", stop);
+
+        function play() {
+
+            switch (key) {
+                case "ArrowLeft":
+                    posX -= 10;
+                    break;
+                case "ArrowRight":
+                    posX += 10;
+                    break;
+            }
+            box.style.transform = `translate(${posX}px, 0)`;
+
+            requestAnimationFrame(play);
+        }
+
+        requestAnimationFrame(play);
+
+
+    </script>
+</body>
+
+</html>
