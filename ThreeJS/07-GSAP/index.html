@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        margin: 0;
-      }
-    </style>
-    <!-- 설치 cdn / node -->
+
     <script type="importmap">
       {
         "imports": {
@@ -20,8 +15,38 @@
         }
       }
     </script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #three-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      .section {
+        position: relative;
+        z-index: 10;
+        height: 150vh;
+        border: 1px solid red;
+      }
+    </style>
   </head>
   <body>
+    <section class="section" id="sectionA">
+      <h2>sectionA</h2>
+    </section>
+    <section class="section" id="sectionB">
+      <h2>sectionB</h2>
+    </section>
+    <section class="section" id="sectionC">
+      <h2>sectionC</h2>
+    </section>
+    <!-- script:module + tab -->
     <script type="module" src="main.js"></script>
   </body>
 </html>

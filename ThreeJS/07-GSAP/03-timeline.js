@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import createTree from "./objects/createTree.js";
+import gsap from "gsap";
 
 // 장면 scene
 const scene = new THREE.Scene();
@@ -14,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 camera.position.z = 5;
-camera.position.set(10, 10, 10);
+camera.position.set(2, 5, 10);
 camera.lookAt(0, 0, 0);
 
 // 렌더러 renderer
@@ -30,66 +30,67 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(1, 2, 3);
 scene.add(directionalLight);
 
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshStandardMaterial({ color: "hotpink" });
+const box = new THREE.Mesh(geometry, material);
+scene.add(box);
+
 renderer.render(scene, camera);
 
-// 땅
-const plane = new THREE.Mesh(
-  new THREE.PlaneGeometry(10, 10),
-  new THREE.MeshStandardMaterial({
-    color: "lightgreen",
-    side: THREE.DoubleSide,
+// 시퀀스 애니메이션 timeline
+const timeline = gsap.timeline({
+  repeat: -1,
+  yoyo: true,
+  paused: true,
+});
+timeline
+  .to(box.position, {
+    x: 2,
+    duration: 2,
   })
-);
-plane.rotation.x = THREE.MathUtils.degToRad(-90);
-scene.add(plane);
+  .to(
+    box.position,
+    {
+      y: 2,
+    },
+    "-=1"
+  )
+  .to(
+    box.rotation,
+    {
+      x: Math.PI,
+      y: Math.PI,
+    },
+    "+=1" // 이 시간만큼 간격이 발생
+  )
+  .to(
+    box.scale,
+    {
+      x: 2,
+      y: 1.5,
+      z: 0.5,
+    },
+    "<"
+  );
 
-// 집 Group
-const houseGroup = new THREE.Group();
+const startButton = document.createElement("button");
+startButton.innerText = "재생하기";
+startButton.style.position = "absolute";
+startButton.style.top = "10px";
+startButton.style.left = "10px";
+document.body.appendChild(startButton);
 
-const wall = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1),
-  new THREE.MeshStandardMaterial({ color: "white" })
-);
-houseGroup.add(wall);
-
-const roof = new THREE.Mesh(
-  new THREE.ConeGeometry(0.8, 0.8, 4),
-  new THREE.MeshStandardMaterial({
-    color: "red",
-  })
-);
-
-roof.position.y = 0.9;
-roof.rotation.y = Math.PI / 4;
-houseGroup.add(roof);
-houseGroup.position.y = 0.5;
-scene.add(houseGroup);
-
-// group clone
-const clonedHouse = houseGroup.clone();
-clonedHouse.position.x = 3;
-scene.add(clonedHouse);
-
-const tree1 = createTree();
-scene.add(tree1);
-tree1.position.z = 3;
-
-const tree2 = createTree();
-scene.add(tree2);
-tree2.position.set(-2, 0, 2);
-tree2.scale.setScalar(0.8);
+startButton.addEventListener("click", () => {
+  timeline.play();
+});
 
 // 컨트롤 control
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // 애니메이션
-function animate() {
-  // box.position.y += 0.01;
+renderer.setAnimationLoop(() => {
   renderer.render(scene, camera);
-  controls.update();
-  requestAnimationFrame(animate);
-}
-animate();
+});
 
 // resize 반응형
 window.addEventListener("resize", () => {
