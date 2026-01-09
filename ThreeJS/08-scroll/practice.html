@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Scroll Animation - 기본</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/",
+          "gsap": "https://cdn.skypack.dev/gsap",
+          "gsap/ScrollTrigger": "https://cdn.skypack.dev/gsap/ScrollTrigger"
+        }
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+      }
+
+      #canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-left: 8%;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      #section1 .section-title {
+        color: #00f0ff;
+      }
+      #section2 .section-title {
+        color: #ff00aa;
+      }
+      #section3 .section-title {
+        color: #ffdd00;
+      }
+      #section4 .section-title {
+        color: #00ff88;
+      }
+      #section5 .section-title {
+        color: #aa00ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+
+    <div class="content">
+      <section id="section1">
+        <h2 class="section-title">Sphere</h2>
+      </section>
+
+      <section id="section2">
+        <h2 class="section-title">Cube</h2>
+      </section>
+
+      <section id="section3">
+        <h2 class="section-title">Torus</h2>
+      </section>
+
+      <section id="section4">
+        <h2 class="section-title">Octahedron</h2>
+      </section>
+
+      <section id="section5">
+        <h2 class="section-title">TorusKnot</h2>
+      </section>
+    </div>
+
+    <script type="module" src="practice.js"></script>
+  </body>
+</html>

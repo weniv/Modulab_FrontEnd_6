@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/",
+          "gsap": "https://cdn.skypack.dev/gsap",
+          "gsap/ScrollTrigger": "https://cdn.skypack.dev/gsap/ScrollTrigger"
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .section {
+        height: 150vh;
+        border: 1px solid red;
+      }
+
+      #three {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- section*4 + tab -->
+    <section class="section" id="sectionA"><h2>sectionA</h2></section>
+    <section class="section" id="sectionB"><h2>sectionB</h2></section>
+    <section class="section" id="sectionC"><h2>sectionC</h2></section>
+    <section class="section" id="sectionD"><h2>sectionD</h2></section>
+
+    <!-- script:module + tab -->
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
