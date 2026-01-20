@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Tailwind.css 공부하기</title>
+</head>
+<body>
+<!--
+1. 박스가 3개 있어야 합니다.
+2. 박스는 가로로 배치되어야 합니다.
+3. 박스 사이에는 16px 간격이 있어야 합니다.
+4. 박스의 크기는 각각 100px X 100px 이어야 합니다.
+5. 박스의 배경색은 파란색(#1877F2) 이어야 합니다.
+6. (반응형) 화면의 너비가 1024px 이하로 줄어들면 박스 컬러가 red로 바뀝니다.
+7. (반응형) 화면의 너비가 768px 이하로 줄어들면 박스가 세로로 배치되어야 합니다. 박스의 컬러는 green으로 바뀝니다.
+-->
+
+<div class="flex flex-col md:flex-row gap-[16px]">
+    <div class="w-[100px] h-[100px] lg:bg-[#1877F2] md:bg-[#ff0000] bg-[#00ff00] ">hello</div>
+    <div class="w-[100px] h-[100px] lg:bg-[#1877F2] md:bg-[#ff0000] bg-[#00ff00]">hello</div>
+    <div class="w-[100px] h-[100px] lg:bg-[#1877F2] md:bg-[#ff0000] bg-[#00ff00]">hello</div>
+</div>
+
+<div>
+    <div class="bg-red-400 h-20 w-1/3"></div>
+    <div class="bg-red-300 h-20 w-2/3"></div>
+</div>
+
+</body>
+</html>

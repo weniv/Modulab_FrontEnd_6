@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wenivooks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2E6FF2',
+                        primaryHover: '#1E5AD9',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 슬라이더 스타일 */
+        .slider {
+            position: relative;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .dot.active {
+            background: white;
+        }
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .slider-arrow:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .slider-arrow.prev {
+            left: 20px;
+        }
+        .slider-arrow.next {
+            right: 20px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Header -->
+    <header class="h-16 border-b border-gray-100 bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center">
+                <span class="text-primary font-bold text-xl tracking-tight">weniv</span>
+                <span class="text-gray-800 font-medium text-xl">ooks</span>
+            </a>
+            
+            <!-- Right Side -->
+            <div class="flex items-center gap-4">
+                <!-- Search -->
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        placeholder="검색어를 입력하세요." 
+                        class="w-64 h-10 pl-4 pr-10 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-primary transition-colors"
+                    >
+                    <button class="absolute right-3 top-1/2 -translate-y-1/2">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Icons -->
+                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </button>
+                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Slider -->
+    <section class="slider relative">
+        <div class="slides" id="slides">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="https://picsum.photos/1920/340?random=1" alt="배너 1" class="w-full h-[340px] object-cover">
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="https://picsum.photos/1920/340?random=2" alt="배너 2" class="w-full h-[340px] object-cover">
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="https://picsum.photos/1920/340?random=3" alt="배너 3" class="w-full h-[340px] object-cover">
+            </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button class="slider-arrow prev" onclick="prevSlide()">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="slider-arrow next" onclick="nextSlide()">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+        
+        <!-- Dots -->
+        <div class="slider-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <!-- Search Bar -->
+        <div class="max-w-xl mx-auto mb-10">
+            <div class="relative">
+                <input 
+                    type="text" 
+                    placeholder="어떤 책을 찾으시나요?" 
+                    class="w-full h-14 pl-6 pr-14 border border-gray-200 rounded-full text-base focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                >
+                <button class="absolute right-5 top-1/2 -translate-y-1/2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex justify-center gap-3 mb-12">
+            <button class="px-5 py-2.5 bg-primary text-white rounded-full text-sm font-medium hover:bg-primaryHover transition-colors">
+                전체
+            </button>
+            <button class="px-5 py-2.5 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                견고한 시리즈
+            </button>
+            <button class="px-5 py-2.5 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                베이스캠프 시리즈
+            </button>
+            <button class="px-5 py-2.5 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                에센셜 시리즈
+            </button>
+            <button class="px-5 py-2.5 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                기타
+            </button>
+        </div>
+
+        <!-- Book Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Book Card 1 -->
+            <div class="flex gap-6 p-4 rounded-2xl hover:bg-gray-50 transition-colors group">
+                <!-- Book Cover -->
+                <div class="w-40 h-52 flex-shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div class="w-full h-full bg-gradient-to-br from-emerald-500 to-teal-600 flex flex-col items-center justify-center p-4">
+                        <span class="text-white/80 text-xs font-medium mb-2">견고한</span>
+                        <span class="text-white text-2xl font-bold">PYTHON</span>
+                        <div class="mt-4 w-16 h-16 bg-white/20 rounded-lg"></div>
+                    </div>
+                </div>
+                
+                <!-- Book Info -->
+                <div class="flex flex-col py-2">
+                    <p class="text-xs text-gray-400 mb-1">주식회사 위니브 | 출판사: 사도출판</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">견고한 파이썬</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-sm text-gray-500">전자책</span>
+                        <span class="text-sm font-medium text-primary">무료</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
+                        웹/앱, 인공지능, 게임 개발, 데이터 분석, 업무 자동화 등 다양한 분야에서 활용되는 프로그래밍 언어 파이썬을 견고하게 ...
+                    </p>
+                    <div class="mt-auto">
+                        <button class="px-6 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primaryHover transition-colors">
+                            Web-book
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 2 -->
+            <div class="flex gap-6 p-4 rounded-2xl hover:bg-gray-50 transition-colors group">
+                <!-- Book Cover -->
+                <div class="w-40 h-52 flex-shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div class="w-full h-full bg-gradient-to-br from-sky-400 to-blue-500 flex flex-col items-center justify-center p-4">
+                        <span class="text-white text-lg font-bold mb-1">Python</span>
+                        <span class="text-white/90 text-sm">베이스캠프</span>
+                        <div class="mt-4 w-20 h-16">
+                            <svg viewBox="0 0 80 60" class="w-full h-full">
+                                <polygon points="40,10 70,50 10,50" fill="rgba(255,255,255,0.3)"/>
+                                <polygon points="50,20 75,50 25,50" fill="rgba(255,255,255,0.2)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book Info -->
+                <div class="flex flex-col py-2">
+                    <p class="text-xs text-gray-400 mb-1">주식회사 위니브 | 출판사: 사도출판</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">파이썬 베이스캠프</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-sm text-gray-500">전자책</span>
+                        <span class="text-sm font-medium text-primary">무료</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
+                        파이썬을 쉽고 재미있게 가장 기초적인 지식을 빠르게 학습할 수 있는 베이스캠프 시리즈를 만나보세요.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                        <button class="px-6 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primaryHover transition-colors">
+                            Web-book
+                        </button>
+                        <button class="px-6 py-2.5 bg-white text-gray-700 border border-gray-200 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                            온라인 강의
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 3 -->
+            <div class="flex gap-6 p-4 rounded-2xl hover:bg-gray-50 transition-colors group">
+                <!-- Book Cover -->
+                <div class="w-40 h-52 flex-shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div class="w-full h-full bg-gradient-to-br from-orange-400 to-red-500 flex flex-col items-center justify-center p-4">
+                        <span class="text-white/80 text-xs font-medium mb-2">견고한</span>
+                        <span class="text-white text-2xl font-bold">JavaScript</span>
+                        <div class="mt-4 w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
+                            <span class="text-white/60 text-2xl font-bold">JS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book Info -->
+                <div class="flex flex-col py-2">
+                    <p class="text-xs text-gray-400 mb-1">주식회사 위니브 | 출판사: 사도출판</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">견고한 자바스크립트</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-sm text-gray-500">전자책</span>
+                        <span class="text-sm font-medium text-primary">무료</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
+                        웹 개발의 핵심 언어인 자바스크립트를 체계적으로 학습할 수 있는 교재입니다.
+                    </p>
+                    <div class="mt-auto">
+                        <button class="px-6 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primaryHover transition-colors">
+                            Web-book
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 4 -->
+            <div class="flex gap-6 p-4 rounded-2xl hover:bg-gray-50 transition-colors group">
+                <!-- Book Cover -->
+                <div class="w-40 h-52 flex-shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div class="w-full h-full bg-gradient-to-br from-violet-500 to-purple-600 flex flex-col items-center justify-center p-4">
+                        <span class="text-white text-lg font-bold mb-1">HTML/CSS</span>
+                        <span class="text-white/90 text-sm">베이스캠프</span>
+                        <div class="mt-4 flex gap-2">
+                            <div class="w-8 h-8 bg-orange-400 rounded flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">&lt;/&gt;</span>
+                            </div>
+                            <div class="w-8 h-8 bg-blue-400 rounded flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">#</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book Info -->
+                <div class="flex flex-col py-2">
+                    <p class="text-xs text-gray-400 mb-1">주식회사 위니브 | 출판사: 사도출판</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">HTML/CSS 베이스캠프</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-sm text-gray-500">전자책</span>
+                        <span class="text-sm font-medium text-primary">무료</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
+                        웹 페이지의 구조와 스타일링의 기초를 빠르게 학습할 수 있는 입문서입니다.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                        <button class="px-6 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primaryHover transition-colors">
+                            Web-book
+                        </button>
+                        <button class="px-6 py-2.5 bg-white text-gray-700 border border-gray-200 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                            온라인 강의
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Button -->
+    <button class="fixed bottom-8 left-8 w-14 h-14 bg-emerald-400 hover:bg-emerald-500 rounded-full shadow-lg flex items-center justify-center transition-colors">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+        </svg>
+    </button>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slides = document.getElementById('slides');
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlider() {
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>리액트 1분만에 추가해보기!</title>
+</head>
+<body>
+    <!--
+    1. header, main, footer를 모두 함수 컴포넌트로 만들어주세요.
+    2. main 컴포넌트 안에 section도 3개의 컴포넌트로 들어가도록 만들어주세요.
+    3. 각 section 안에있는 button은 별도의 컴포넌트로 만들어주세요.
+    -->
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        function Button(){
+            return <button>hello!!</button>
+        }
+
+        function Section(){
+            return (
+                <section>
+                    <h2>리액트 시작하기</h2>
+                    <p>리액트를 프로젝트에 추가하는 방법을 알아봅시다.</p>
+                    <Button/>
+                </section>
+            )
+        }
+
+        function Header(){
+            return (
+                <header>
+                    <h1>리액트 1분만에 추가해보기!</h1>
+                    <nav>
+                        <ul>
+                            <li>about</li>
+                            <li>projects</li>
+                            <li>contact</li>
+                        </ul>
+                    </nav>
+                </header>
+            )
+        }
+
+        function Main(){
+            return (
+                <main>
+                    <Section/>
+                    <Section/>
+                    <Section/>
+                </main>
+            )
+        }
+
+        function Footer(){
+            return (
+                <footer>
+                    <p>© 2024 My React App</p>
+                </footer>
+            )
+        }
+        const app = (
+            <div>
+                <Header/>
+                <Main/>
+                <Footer/>
+            </div>
+        );
+
+        const domContainer = document.querySelector('#root');
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(app);
+    </script>
+</body>
+</html>
