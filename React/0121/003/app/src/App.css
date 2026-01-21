@@ -1,3 +1,30 @@
 .one {
     color: red;
 }
+
+.cardBox {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.cardName {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cardImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
