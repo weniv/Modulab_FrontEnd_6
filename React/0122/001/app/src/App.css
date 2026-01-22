@@ -1,0 +1,26 @@
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.large {
+    width: 200px;
+    height: 200px;
+}
+
+.medium {
+    width: 150px;
+    height: 150px;
+}
+
+.small {
+    width: 100px;
+    height: 100px;
+}
