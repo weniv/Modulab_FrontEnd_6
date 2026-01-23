@@ -1,0 +1,26 @@
+<!-- 간단한 onclick 예제 -->
+
+<script>
+// const $heading = document.querySelector('h1');
+function handleClick() {
+    alert('clicked!');
+}
+</script>
+
+<button onclick="handleClick()">클릭</button>
+<button onclick="console.log('clicked')">클릭</button>
+
+<!-- onclick에서 여러줄의 js 코드를 실행하는 예제, 함수도 여러개 실행 -->
+
+<script>
+function handleMultipleClicks() {
+    console.log('첫 번째 클릭 이벤트 처리');
+    console.log('두 번째 클릭 이벤트 처리');
+    alert('모든 클릭 이벤트가 처리되었습니다!');
+}
+
+function anotherFunction() {
+    console.log('추가 함수 실행');
+}
+</script>
+<button onclick="handleMultipleClicks(); anotherFunction(); console.log('hello')">여러 이벤트 처리</button>
