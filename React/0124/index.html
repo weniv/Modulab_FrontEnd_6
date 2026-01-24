@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="target" class="targetDiv"></div>
+
+    <h1 class="hello">
+        hello <i>재현</i> welcome!!
+    </h1>
+
+    <script>
+        // 1. 일관성이 없어요
+        console.log(document.getElementById('target'));
+        console.log(document.getElementsByClassName('targetDiv'));
+        console.log(document.querySelectorAll('div'));
+
+        // 2. 크로스 브라우징 문제
+
+        // 3. 상태와 UI간 동기화의 어려움이 있다.
+        // 상태 선언, 이벤트 등록, 대상 탐색, 업데이트
+        let count = 0;
+
+        button.addEventListener('click', () => {
+            count++;
+        });
+
+        const counter = document.querySelector('.counter');
+        counter.textContent = count;
+
+
+
+        function LikeButton() {
+            const [count, setCount] = useState(0);
+
+            return (
+                <button onClick={() => { setCount(count++) }}>좋아요!{count}</button>
+            );
+        }
+
+
+        // 코드의 발전 순서
+        const h1 = document.createElement('h1');
+        h1.classList.add('hello');
+        h1.appendChild(document.createTextNode('hello'));
+
+        const iEl = document.createElement('i');
+        iEl.appendChild(document.createTextNode('재현'));
+
+        h1.appendChild(iEl);
+        h1.appendChild(document.createTextNode('welcome'));
+
+        document.body.appendChild(h1);
+
+        // 리액트로 만드는 돔
+        function createVDom({ name }) {
+            return React.createElement(
+                'h1',
+                { className: 'hello' },
+                'hello',
+                React.createElement('i', null, name),
+                'welcome!!');
+        }
+
+        function App() {
+            return React.createElement(createVDom);
+        }
+
+
+        // jsx 로 만드는 돔
+        function createVDomWithJsx() {
+            return (
+                <h1 class="hello">
+                    hello <i>재현</i> welcome!!
+                </h1>
+            );
+        }
+
+
+    </script>
+</body>
+
+</html>
