@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 function load() {
     let sum = 0;
@@ -10,6 +10,7 @@ function load() {
 
 function App() {
     const [count, setCount] = useState(0);
+    // let result = useMemo(() => load(), []);
     let result = load();
 
     const handleCountUp = () => {
