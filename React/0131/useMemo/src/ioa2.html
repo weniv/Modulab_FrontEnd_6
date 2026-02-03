@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection Observer 기본 예제</title>
+    <style>
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: #f8f9fa;
+        }
+
+        .target-box {
+            height: 200px;
+            padding: 30px;
+            margin: 20px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 8px;
+
+            /* 초기 상태 설정 */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        /* 요소가 보일 때 적용될 클래스 */
+        .target-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .description {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="description">
+        👇 아래로 스크롤 해보세요!
+    </div>
+
+    <!-- 빈 공간 -->
+    <div class="spacer">
+        여백입니다.
+    </div>
+
+    <!-- 관찰 대상 요소들 -->
+    <div class="target-box">안녕하세요! 1번 박스입니다.</div>
+    <div class="target-box">반갑습니다! 2번 박스입니다.</div>
+    <div class="target-box">어서오세요! 3번 박스입니다.</div>
+
+    <script>
+        // 1. Intersection Observer 생성
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    // 요소가 화면에 보이면
+                    if (entry.isIntersecting) {
+                        // visible 클래스 추가
+                        entry.target.classList.add('visible');
+
+                        // 애니메이션이 한 번만 실행되도록 관찰 중단
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+            },
+            {
+                // 옵션 설정
+                threshold: 1,  // 100% 이상 보일 때
+                rootMargin: '0px'  // 추가 여백 없음
+            }
+        );
+
+        // 2. 관찰 대상 요소들을 선택하고 관찰 시작
+        document.querySelectorAll('.target-box').forEach(box => {
+            observer.observe(box);
+        });
+
+        // 3. 현재 상태를 콘솔에 출력하는 함수 (학습용)
+        function logObserverStats(entries) {
+            entries.forEach(entry => {
+                console.log('=== 관찰 정보 ===');
+                console.log('보이는 상태:', entry.isIntersecting);
+                console.log('교차 비율:', entry.intersectionRatio);
+                console.log('타겟 요소:', entry.target.textContent);
+            });
+        }
+    </script>
+</body>
+
+</html>

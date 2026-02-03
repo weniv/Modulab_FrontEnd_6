@@ -1,33 +1,51 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useScroll2 } from './hooks/useScroll';
+import useScrollObserver from './hooks/useScrollObserver';
 
 export default function InfiniteScroll() {
 
     const [imageList, setImageList] = useState([]);
-    const { isBottom } = useScroll2();
+    const [page, setPage] = useState(1);
+    const { isBottom } = useScrollObserver();
+    const isLoading = useRef(false);
 
-    async function fetchImage() {
-        console.log('ㅋㅋㅋ');
+
+    async function fetchImage(pageNum) {
+
+        if (isLoading.current) return;
+
+        isLoading.current = true;
+
         try {
-            const response = await fetch('https://picsum.photos/v2/list?page=1&limit=6');
+            const response = await fetch(`https://picsum.photos/v2/list?page=${pageNum}&limit=6`);
 
             if (!response.ok) {
                 throw new Error('네트워크에 문제가 있습니다.');
             }
 
             const data = await response.json();
-            setImageList(data);
+            setImageList((prevData) => [...prevData, ...data]);
         } catch (error) {
             console.error(error.message);
+        } finally {
+            isLoading.current = false;
         }
     }
 
     useEffect(() => {
+        fetchImage();
+    }, []);
+
+    useEffect(() => {
         console.log(isBottom);
-        if (!isBottom) {
-            fetchImage();
+        if (isBottom) {
+
+            const nextPage = page + 1;
+
+            setPage(nextPage);
+
+            fetchImage(nextPage);
         }
     }, [isBottom]);
 
