@@ -3,13 +3,36 @@ import { useState } from "react";
 function LoginComponent() {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
+    const [isPending, setIsPending] = useState(false);
 
-    const handleSubmit = () => {
-
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         // id, password 둘중의 하나라도 falsy를 반환할 경우
         if (!id || !password) {
             alert('아이디와 비밀번호를 모두 작성해야합니다.');
             return;
+        }
+
+        try {
+            setIsPending(true);
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    password: password
+                })
+            });
+            if (!response.ok) new Error('통신에 문제가 있습니다.');
+
+            const result = await response.json();
+            setIsPending(false);
+            console.log(`${result.user.id} 님 환영합니다!`);
+        } catch (error) {
+            console.error(error.message);
+            setIsPending(false);
         }
     }
 
