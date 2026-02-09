@@ -1,5 +1,5 @@
 // 두 숫자를 받아서 그 합을 반환하는 함수
-function add(x: number, y: number): number {
+function add(x: number, y?: number): number {
     return x + y;
 }
  
