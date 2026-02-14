@@ -1,4 +1,5 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
+import { appAuth } from '../firebase/config';
 
 // context를 객체를 생성합니다.
 const AuthContext = createContext();
@@ -11,6 +12,8 @@ const authReducer = (state, action) => {
             return { ...state, user: action.payload }
         case 'logout':
             return { ...state, user: null };
+        case 'authIsReady':
+            return { ...state, user: action.payload, isAuthReady: true };
         default:
             return state
     }
@@ -21,10 +24,21 @@ const authReducer = (state, action) => {
 const AuthContextProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(authReducer, {
-        user: null
+        user: null,
+        isAuthReady: false
     });
 
-    console.log('userInfo: ', state);
+    useEffect(() => {
+        const unsubscribe = appAuth.onAuthStateChanged((user) => {
+            console.log(user);
+            dispatch({ type: 'authIsReady', payload: user });
+        });
+
+        return () => {
+            unsubscribe();
+        }
+    }, []);
+
 
     return (
         // { ...state, dispatch } 이 두 가지 값이 context객체를 통해 접근할 수 있는 값이 됩니다.
