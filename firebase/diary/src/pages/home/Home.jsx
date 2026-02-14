@@ -2,9 +2,13 @@ import React from 'react'
 import styles from './Home.module.css'
 import DiaryForm from './DiaryForm'
 import { useAuthContext } from '../../Hooks/useAuthContext'
+import { useCollection } from '../../Hooks/useCollection';
+import DiaryList from './DiaryList';
 
 export default function Home() {
     const { user } = useAuthContext();
+    // const { documents, error } = useCollection('diary');
+    const { documents, error } = useCollection('diary', ["uid", "==", user.uid]);
 
     return (
         <div className="container">
@@ -14,7 +18,10 @@ export default function Home() {
             </main>
             <section>
                 <h2 className="a11y-hidden">일기 목록</h2>
-                <ul></ul>
+                <ul className={styles.content_list}>
+                    {error && <strong>{error}</strong>}
+                    {documents && <DiaryList diaries={documents} />}
+                </ul>
             </section>
         </div>
     )
